@@ -12,9 +12,7 @@
 
 - `hostname -help` 查看命令的帮助信息
 
-
 ---
-
 
 ## 文件系统
 
@@ -38,7 +36,7 @@
 
     - `mkdir dir` 创建目录
 
-    - `cp -R Scripts/  Mod_Scripts` -R参数创建一开始不存在的Mod_Scripts，Scripts/目录下的所有文件将会复制到其中
+    - `cp -R Scripts/  Mod_Scripts` `R`参数创建一开始不存在的Mod_Scripts，Scripts/目录下的所有文件将会复制到其中
 
     - `cp *script  Mod_Scripts/` 所有以script结尾的文件复制
 
@@ -74,7 +72,7 @@
  - `file my_file` 查看文件类型
 
  - 查看整个文件
-    - `cat -n test1` `-n`给所有行带上行号,`-b`只给有文本的行加上行号，`-T`不让制表符出现，用^I代替
+    - `cat -n test1` `n`给所有行带上行号,`b`只给有文本的行加上行号，`T`不让制表符出现，用^I代替
 
     - `more my_file` 空格键或回车键逐行向前的方式浏览文本文件，浏览完之后按`q`键退出，`more`是一个分页工具，但只支持文本文件中的基本移动
 
