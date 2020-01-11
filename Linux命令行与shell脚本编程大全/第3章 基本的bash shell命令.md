@@ -1,9 +1,9 @@
 
-#第3章 基本的bash shell命令
+# 第3章 基本的bash shell命令
     
 
 ---
-##bash手册
+## bash手册
 - `man -k keyword` 关键字搜索命令手册页
 
 - `man 1 hostname` 查看hostname命令手册页中第1部分 可执行程序或shell命令 的内容
@@ -16,7 +16,7 @@
 ---
 
 
-##文件系统
+## 文件系统
 
 - ###基本列表
     - `ls` 输出列表按字母，列排序
