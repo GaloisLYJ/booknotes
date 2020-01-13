@@ -4,7 +4,7 @@
 ---
 ## 进程管理
 - `ps -ef` `e`表示显示所有进程，`f`表示更多信息
-
+- `top` 跟`ps`类似，但实时显示
 
     ps是实时监测的，只能显示某个特定时间点的信息，不能观察频繁换进换出的内存进程趋势。
 - `kill -9 pid` 只能用进程的pid传递信号，`9`表示无条件终止，P72
@@ -36,4 +36,8 @@
 
 ## 处理数据
 - `sort -n file` 默认语言对文本文件数据行排序并`cat`，`n`把数字识别成数字而非字符，`M`按月排序含有时间戳日期的文件如日志
-- `grep `
+- `grep [options] pattern file` 查找匹配指定模式字符的行，`n`行号,`v`反向搜索,`pattern`支持正则表达式，文本搜索神器
+- `tar -cvf test.tar test/ test2/` `c`,c创建一个名为test.tar的归档文件,含有test和test2目录内容,`v`在处理文件时显示文件,`f`输出结果到文件或设备file
+- `tar -tf test.tar` `t`列出已有tar文件,列出文件内容但不提取文件
+- `tar -xvf test.tar /mytest/` 解压,`x`提取,`v`处理文件时显示文件,`f`输出结果到文件或设备file
+- `bzip2` `gzip` `zip` 其他Linux文件压缩工具
