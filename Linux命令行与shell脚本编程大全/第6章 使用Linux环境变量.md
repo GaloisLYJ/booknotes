@@ -183,7 +183,7 @@
     
     
 ### 数组变量
-- `mytest=(one two three four five)`
+- `mytest=(one two three four five)` 设置数组环境变量
 - `echo ${mytest[2]}` 引用一个单独的数组元素
 - `echo ${mytest[*]}` 显示整个数组变量
 - `mytest[2]=seven` 改变某个索引位置的值
