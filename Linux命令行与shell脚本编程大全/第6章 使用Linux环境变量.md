@@ -1,5 +1,4 @@
 # 第6章 使用Linux环境变量
-    
 
 ---
 ## 环境变量
@@ -10,8 +9,8 @@
 - `env`
 - `echo $HOME` 这个需要带上`$`
 - `ls $HOME` 能够让变量作为命令行参数
-    
-    
+  
+  
     对于shell会话和所有生成的子shell可见,系统环境变量基本都是使用全大写字母。
 ### 局部环境变量
 - `set` 显示为某个特定进程设置的所有环境变量,包括局部变量,全局变量,以及用户定义变量
@@ -23,17 +22,17 @@
  - `my_variable=Hello`
  - `my_variable='Hell o'`
  - `echo $my_variable`
-    
-    
+   
+   
     注意=左右没有空格,当值里面有空格时需要用单引号       
  - `my_variable='I am Galois'`
  - `export my_variable` 先创建局部环境变量,再用`export`将其导出到全局环境中,不需要加`$`
- 
- 
+
+
     修改子shell中全局环境变量并不会影响到父shell中该变量的值。甚至无法使用export命令改变父shell中全局环境变量的值。
 - `unset my_variable` `echo $my_variable` 删除已经存在的环境变量
 
-    
+  
     和修改变量一样，在子shell中删除全局变量后，你无法将效果反映到父shell中。
 
 ### 默认的shell环境变量P112
@@ -46,11 +45,12 @@
 
 
     对PATH变量的修改只能持续到退出或重启系统。
-    
+
 ### 定位系统环境变量
 - 登录shell
     - `/etc/profile`
             
+        
             系统默认的bash shell主启动文件,系统上每个用户登录时都会执行。
     - `$HOME/.bash_profile`
     - $HOME/.bashrc
@@ -66,12 +66,12 @@
             注意，这个列表中并没有$HOME/.bashrc文件。这是因为该文件通常通过其他文件运行的。
             
             $HOME表示的是某个用户的主目录。它和波浪号（~）的作用一样。
-            .bash_profile启动文件会先去检查HOME目录中是不是还有一个叫.bashrc的启动文件。如果有的话，会先执行启动文件里面的命令。
-
+        .bash_profile启动文件会先去检查HOME目录中是不是还有一个叫.bashrc的启动文件。如果有的话，会先执行启动文件里面的命令。
+    
 - 交互式shell进程
 
         bash不是登录时启动,如运行bash命令启动,叫做交互式shell,不会像登录shell一样运行,但依然提供命令行提示符来输入命令。
-            
+    
    交互式shell`不会访问/etc/profile文件,只会检查用户HOME目录中的.bashrc文件`。
    
         .bashrc文件有两个作用：
@@ -84,7 +84,7 @@
     bash shell提供了`BASH_ENV环境变量`,当启动一个非交互式shell即脚本shell时,会检查这个环境变量来查看要执行的启动文件。如果有指定文件,shell会执行该文件里的命令,通常就包括shell脚本变量设置。
         
         `printenv BASH_ENV` `echo $BASH_ENV` 这个环境变量默认情况未设置。返回一个空行。
-        
+    
     如果`BASH_ENV`变量没有设置,shell脚本可以通过启动一个子shell执行,而`子shell可以继承父shell导出过的变量`。
     
     举例来说，如果父shell是登录shell，在/etc/profile、/etc/profile.d/*.sh和$HOME/.bashrc文件中,设置并导出了变量，用于执行脚本的子shell就能够继承这些变量。
@@ -101,9 +101,9 @@
     在大多数发行版中，`存储个人用户永久性bash shell变量的地方是$HOME/.bashrc文件(个人用户永久性)。这一点适用于所有类型的shell进程。`但如果设置了BASH_ENV变量，那么记住，除非它指向的是$HOME/.bashrc，否则你应该将非交互式shell的用户变量放在别的地方。
     
         bash shell会在启动时执行几个启动文件。这些启动文件包含了环境变量的定义，可用于为每个bash会话设置标准环境变量。每次登录Linux系统，bash shell都会访问/etc/profile启动文件以及3个针对每个用户的本地启动文件：
-    `$HOME/.bash_profile、$HOME/.bash_login、$HOME/.profile 用户可以在这些文件中定制自己想要的环境变量和启动脚本。`待测试bash生成的bash是否生效和脚本shell是否生效。
+    `$HOME/.bash_profile、$HOME/.bash_login、$HOME/.profile` 用户可以在这些文件中定制自己想要的环境变量和启动脚本。`待测试bash生成的bash是否生效和脚本shell是否生效。
     
-    
+    ```
     1、全局不全局看该变量有没有执行export命令,全局变量在不同的shell中(父shell不能)都能获取,局部变量只能在当前定义的shell中获取。
     2、永久不永久是指该变量在重启系统之后是否持续生效,或者说重启shell窗口是否持续生效,如alias命令设置如果不是放在$HOME/.bashrc启动文件中就不是永久的。
     
@@ -116,6 +116,70 @@
          |     不存在
     $HOME/.profile 执行完任一个即终止
          
+    ```
+    
+    ```
+    ➜ cat ~/.bashrc
+    
+    BASH=/Users/yons/bash
+    source $BASH/common_bash
+    
+    ➜ cat ~/.bash_profile
+    export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_212.jdk/Contents/Home
+    export JAVA_HOME=$JAVA_8_HOME
+    alias jdk8='export JAVA_HOME=$JAVA_8_HOME'
+    CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
+    
+    export M2_HOME=/usr/local/Cellar/maven/3.6.1/libexec
+    export PATH=$PATH:$M2_HOME/bin
+    PATH=$JAVA_HOME/bin:$PATH:.
+    
+    export PYTHON_3=/Library/Frameworks/Python.framework/Versions/3.7/bin
+    export PYTHON=$PYTHON_3
+    export PATH=$PATH:$PYTHON
+    alias python='/Library/Frameworks/Python.framework/Versions/3.7/bin/python3.7'
+    
+    export ADB='/Applications/Nox App Player.app/Contents/MacOS'
+    export PATH=$PATH:$ADB
+    
+    export PATH
+    PATCH=$PATH:/usr/local/mysql/bin
+    export CLASSPATH
+    
+    
+    source ~/.bashrc
+    
+    ➜ cat /etc/profile
+    # System-wide .profile for sh(1)
+    
+    if [ -x /usr/libexec/path_helper ]; then
+    	eval `/usr/libexec/path_helper -s`
+    fi
+    
+    if [ "${BASH-no}" != "no" ]; then
+    	[ -r /etc/bashrc ] && . /etc/bashrc
+    fi
+    
+    ➜ cat common_bash
+    #=========file=========
+    alias cdp="cd /Users/yons/project"
+    alias cda="cd /Users/yons/project/api"
+    alias cdl="cd /Users/yons/project/lib"
+    alias cds="cd /Users/yons/project/service"
+    alias c="clear"
+    
+    #=========git==========
+    alias emptycm="git commit --allow-empty -m 'rebuild';git push"
+    alias syn="git fetch upstream;git checkout master;git merge upstream/master;git push;"
+    #更新lib，service，api中的所有项目,同步fork的仓库代码，更新本地master分支为最新
+    alias pull="cdl;./pullAllLib.sh;cds;./pullAllService.sh;cda;./pullAllApi.sh"
+    #查看所有本地分支和远程分支的连接关系，以及版本信息
+    alias vv="git branch -vv;"
+    #查看所有远程项目地址及其别名
+    alias remote="git remote -v;"
+    ```
+    
+    
 ### 数组变量
 - `mytest=(one two three four five)`
 - `echo ${mytest[2]}` 引用一个单独的数组元素
