@@ -8,3 +8,4 @@
 - 《Linux命令行与shell脚本编程大全》
     - [第3章 基本的bash shell命令](https://github.com/GaloisLYJ/booknotes/blob/master/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8Eshell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E5%A4%A7%E5%85%A8/%E7%AC%AC3%E7%AB%A0%20%E5%9F%BA%E6%9C%AC%E7%9A%84bash%20shell%E5%91%BD%E4%BB%A4.md)
     - [第4章 更多的bash shell命令](https://github.com/GaloisLYJ/booknotes/blob/master/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8Eshell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E5%A4%A7%E5%85%A8/%E7%AC%AC4%E7%AB%A0%20%E6%9B%B4%E5%A4%9A%E7%9A%84bash%20shell%E5%91%BD%E4%BB%A4.md)
+    - [第5章 理解shell](https://github.com/GaloisLYJ/booknotes/blob/master/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8Eshell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E5%A4%A7%E5%85%A8/%E7%AC%AC5%E7%AB%A0%20%E7%90%86%E8%A7%A3shell.md)
