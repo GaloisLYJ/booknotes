@@ -101,7 +101,7 @@
     在大多数发行版中，`存储个人用户永久性bash shell变量的地方是$HOME/.bashrc文件(个人用户永久性)。这一点适用于所有类型的shell进程。`但如果设置了BASH_ENV变量，那么记住，除非它指向的是$HOME/.bashrc，否则你应该将非交互式shell的用户变量放在别的地方。
     
         bash shell会在启动时执行几个启动文件。这些启动文件包含了环境变量的定义，可用于为每个bash会话设置标准环境变量。每次登录Linux系统，bash shell都会访问/etc/profile启动文件以及3个针对每个用户的本地启动文件：
-    `$HOME/.bash_profile、$HOME/.bash_login、$HOME/.profile` 用户可以在这些文件中定制自己想要的环境变量和启动脚本。`待测试bash生成的bash是否生效和脚本shell是否生效。
+    `$HOME/.bash_profile、$HOME/.bash_login、$HOME/.profile` 用户可以在这些文件中定制自己想要的环境变量和启动脚本。`(个人用户永久性，也是适用于所有类型的shell进程)`
     
     ```
     1、全局不全局看该变量有没有执行export命令,全局变量在不同的shell中(父shell不能)都能获取,局部变量只能在当前定义的shell中获取。
@@ -181,8 +181,55 @@
     fi
     ```
     
+    在`~/bashrc`和`~/bash_profile`中定义的变量，在非交互式shell中也是可以执行的
     
+    ```
+    # ~/study/example [20:52:35]
+    ➜ cat exampleEchoBash.sh
+    
+    echo $BASH;
+    
+    echo $JAVA_HOME;
+    
+    # ~/study/example [20:52:44]
+    ➜ ./exampleEchoBash.sh
+    /bin/sh
+    /Library/Java/JavaVirtualMachines/jdk1.8.0_212.jdk/Contents/Home
+    
+    # ~/study/example [20:52:53]
+    ➜ bash
+    bash-3.2$ ./exampleEchoBash.sh
+    /bin/bash
+    /Library/Java/JavaVirtualMachines/jdk1.8.0_212.jdk/Contents/Home
+    bash-3.2$
+    ```
+    
+    但是配置的alias命令只可以在bash(交互式shell)中使用，不能在脚本中(非交互式shell)使用
+    
+    ```
+    # ~/study/example [20:57:27]
+    ➜ cat exampleC.sh
+    
+    c;
+    
+    # ~/study/example [20:57:33]
+    ➜ cat exampleClean.sh
+    
+    clean;
+    
+    # ~/study/example [20:57:39]
+    ➜ ./exampleC.sh
+    ./exampleC.sh: line 2: c: command not found
+    
+    # ~/study/example [20:57:49]
+    ➜ ./exampleClean.sh
+    ./exampleClean.sh: line 2: clean: command not found
+    
+    # ~/study/example [20:57:53]
+    ➜
+    ```
 ### 数组变量
+
 - `mytest=(one two three four five)` 设置数组环境变量
 - `echo ${mytest[2]}` 引用一个单独的数组元素
 - `echo ${mytest[*]}` 显示整个数组变量
