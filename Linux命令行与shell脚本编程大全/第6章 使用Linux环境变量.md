@@ -72,7 +72,7 @@
 
         bash不是登录时启动,如运行bash命令启动,叫做交互式shell,不会像登录shell一样运行,但依然提供命令行提示符来输入命令。
     
-   交互式shell`不会访问/etc/profile文件,只会检查用户HOME目录中的.bashrc文件`。
+   ​	交互式shell`不会访问/etc/profile文件,只会检查用户HOME目录中的.bashrc文件`。
    
         .bashrc文件有两个作用：
         一是查看/etc目录下通用的bashrc文件
@@ -81,24 +81,24 @@
 - 非交互式shell
 
         系统执行脚本时用的shell,没有命令行提示符。但是当你在系统上运行脚本时,也许希望能够运行一些特定启动的命令。
-    bash shell提供了`BASH_ENV环境变量`,当启动一个非交互式shell即脚本shell时,会检查这个环境变量来查看要执行的启动文件。如果有指定文件,shell会执行该文件里的命令,通常就包括shell脚本变量设置。
-        
+    ​	bash shell提供了`BASH_ENV环境变量`,当启动一个非交互式shell即脚本shell时,会检查这个环境变量来查看要执行的启动文件。如果有指定文件,shell会执行该文件里的命令,通常就包括shell脚本变量设置。
+    ​    
         `printenv BASH_ENV` `echo $BASH_ENV` 这个环境变量默认情况未设置。返回一个空行。
     
-    如果`BASH_ENV`变量没有设置,shell脚本可以通过启动一个子shell执行,而`子shell可以继承父shell导出过的变量`。
+    ​	如果`BASH_ENV`变量没有设置,shell脚本可以通过启动一个子shell执行,而`子shell可以继承父shell导出过的变量`。
     
-    举例来说，如果父shell是登录shell，在/etc/profile、/etc/profile.d/*.sh和$HOME/.bashrc文件中,设置并导出了变量，用于执行脚本的子shell就能够继承这些变量。
+    ​	举例来说，如果父shell是登录shell，在/etc/profile、/etc/profile.d/*.sh和$HOME/.bashrc文件中,设置并导出了变量，用于执行脚本的子shell就能够继承这些变量。
     
-    对于那些不启动子shell的脚本，变量已经存在于当前shell中了。所以就算没有设置BASH_ENV，也可以使用当前shell的局部变量和全局变量。
+    ​	对于那些不启动子shell的脚本，变量已经存在于当前shell中了。所以就算没有设置BASH_ENV，也可以使用当前shell的局部变量和全局变量。
     
 - 环境变量持久化
 
         了解了各种shell进程以及对应的环境文件,就可以利用这些文件创建自己的永久性全局变量或局部变量。
-    对于所有用户都需要使用的变量来说,可能更倾向于放到/etc/profile文件中,但这并非是个好主意,如果升级了发行版,这个文件会被更新。
+    ​	对于所有用户都需要使用的变量来说,可能更倾向于放到/etc/profile文件中,但这并非是个好主意,如果升级了发行版,这个文件会被更新。
     
-    最好是`在/etc/profile.d目录中创建一个以.sh结尾的文件,把所有新的或修改过的全局环境变量设置放在这个文件中(所有用户永久性)`。在/etc/profile中有for语句迭代该目录下的文件。
+    ​	最好是`在/etc/profile.d目录中创建一个以.sh结尾的文件,把所有新的或修改过的全局环境变量设置放在这个文件中(所有用户永久性)`。在/etc/profile中有for语句迭代该目录下的文件。
     
-    在大多数发行版中，`存储个人用户永久性bash shell变量的地方是$HOME/.bashrc文件(个人用户永久性)。这一点适用于所有类型的shell进程。`但如果设置了BASH_ENV变量，那么记住，除非它指向的是$HOME/.bashrc，否则你应该将非交互式shell的用户变量放在别的地方。
+    ​	在大多数发行版中，`存储个人用户永久性bash shell变量的地方是$HOME/.bashrc文件(个人用户永久性)。这一点适用于所有类型的shell进程。`但如果设置了BASH_ENV变量，那么记住，除非它指向的是$HOME/.bashrc，否则你应该将非交互式shell的用户变量放在别的地方。
     
         bash shell会在启动时执行几个启动文件。这些启动文件包含了环境变量的定义，可用于为每个bash会话设置标准环境变量。每次登录Linux系统，bash shell都会访问/etc/profile启动文件以及3个针对每个用户的本地启动文件：
     `$HOME/.bash_profile、$HOME/.bash_login、$HOME/.profile` 用户可以在这些文件中定制自己想要的环境变量和启动脚本。`(个人用户永久性，也是适用于所有类型的shell进程)`
