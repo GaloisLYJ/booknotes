@@ -40,5 +40,5 @@
 - `grep [options] pattern file` 查找匹配指定模式字符的行，`n`行号,`v`反向搜索,`pattern`支持正则表达式，文本搜索神器
 - `tar -cvf test.tar test/ test2/` `c`,c创建一个名为test.tar的归档文件,含有test和test2目录内容,`v`在处理文件时显示文件,`f`输出结果到文件或设备file
 - `tar -tf test.tar` `t`列出已有tar文件,列出文件内容但不提取文件
-- `tar -xvf test.tar /mytest/` 解压,`x`提取,`v`处理文件时显示文件,`f`输出结果到文件或设备file
+- `tar -xvf test.tar mytest/` 解压,`x`提取,`v`处理文件时显示文件,`f`输出结果到文件或设备file
 - `bzip2` `gzip` `zip` 其他Linux文件压缩工具
