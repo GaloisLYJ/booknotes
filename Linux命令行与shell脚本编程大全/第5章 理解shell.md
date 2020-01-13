@@ -42,18 +42,21 @@
 - `(sleep 2 ; echo $BASH_SUBSHELL ; sleep 2)&`
   
 
+
+
 在CLI中运用子shell的创造性方法:
 
 - `将进程列表置入后台模式`
+    
     - `(sleep 2 ; echo $BASH_SUBSHELL ; sleep 2)&`
     
     - `(tar -cf Rich.tar /home/rich ; tar -cf My.tar /home/christine)&` 使用tar创建备份文件是有效利用后台进程列表的一个更实用的例子。
       
       ```
-        	注意，后台模式中表明单一级子shell的数字1显示在了提示符的旁边,只需按一个回车键可得到另一个提示符。你既可以在子shell中进行繁重的处理工作，同时也不会让子shell的I/O受制于终端。
-```
+    	注意，后台模式中表明单一级子shell的数字1显示在了提示符的旁边,只需按一个回车键可得到另一个提示符。你既可以在子shell中进行繁重的处理工作，同时也不会让子shell的I/O受制于终端。
+    ```
     
-- `协程`
+- 协程
     
     - `coproc sleep 10` 创建子shell并执行命令,返回作业号和进程ID
     
@@ -66,6 +69,7 @@
       ```
     
 - 同时使用创建嵌套的子shell
+    
     - `coproc ( sleep 10; sleep 2 )`
     
     - `jobs`
