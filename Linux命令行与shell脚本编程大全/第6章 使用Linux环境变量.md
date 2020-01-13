@@ -118,49 +118,16 @@
          
     ```
     
-    alias 个人用户持久性配置 实例
+    Mac下  alias 个人用户持久性配置  实例
     
     ```
+    # ~/study/booknotes [master ✗ (74af234)] [20:21:51]
+    ➜ echo $BASH_ENV
+    
     ➜ cat ~/.bashrc
     
     BASH=/Users/yons/bash
     source $BASH/common_bash
-    
-    ➜ cat ~/.bash_profile
-    export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_212.jdk/Contents/Home
-    export JAVA_HOME=$JAVA_8_HOME
-    alias jdk8='export JAVA_HOME=$JAVA_8_HOME'
-    CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
-    
-    export M2_HOME=/usr/local/Cellar/maven/3.6.1/libexec
-    export PATH=$PATH:$M2_HOME/bin
-    PATH=$JAVA_HOME/bin:$PATH:.
-    
-    export PYTHON_3=/Library/Frameworks/Python.framework/Versions/3.7/bin
-    export PYTHON=$PYTHON_3
-    export PATH=$PATH:$PYTHON
-    alias python='/Library/Frameworks/Python.framework/Versions/3.7/bin/python3.7'
-    
-    export ADB='/Applications/Nox App Player.app/Contents/MacOS'
-    export PATH=$PATH:$ADB
-    
-    export PATH
-    PATCH=$PATH:/usr/local/mysql/bin
-    export CLASSPATH
-    
-    
-    source ~/.bashrc
-    
-    ➜ cat /etc/profile
-    # System-wide .profile for sh(1)
-    
-    if [ -x /usr/libexec/path_helper ]; then
-    	eval `/usr/libexec/path_helper -s`
-    fi
-    
-    if [ "${BASH-no}" != "no" ]; then
-    	[ -r /etc/bashrc ] && . /etc/bashrc
-    fi
     
     ➜ cat common_bash
     #=========file=========
@@ -179,6 +146,39 @@
     alias vv="git branch -vv;"
     #查看所有远程项目地址及其别名
     alias remote="git remote -v;"
+    
+    ➜ cat ~/.bash_profile
+    export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_212.jdk/Contents/Home
+    export JAVA_HOME=$JAVA_8_HOME
+    alias jdk8='export JAVA_HOME=$JAVA_8_HOME'
+    export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
+    export PATH=$PATH:$JAVA_HOME/bin:.
+    
+    export M2_HOME=/usr/local/Cellar/maven/3.6.1/libexec
+    export PATH=$PATH:$M2_HOME/bin
+    
+    export PYTHON_3=/Library/Frameworks/Python.framework/Versions/3.7/bin
+    export PYTHON=$PYTHON_3
+    export PATH=$PATH:$PYTHON
+    alias python='/Library/Frameworks/Python.framework/Versions/3.7/bin/python3.7'
+    
+    export ADB='/Applications/Nox App Player.app/Contents/MacOS'
+    export PATH=$PATH:$ADB
+    
+    export PATCH=$PATH:/usr/local/mysql/bin
+    
+    source ~/.bashrc
+    
+    ➜ cat /etc/profile
+    # System-wide .profile for sh(1)
+    
+    if [ -x /usr/libexec/path_helper ]; then
+    	eval `/usr/libexec/path_helper -s`
+    fi
+    
+    if [ "${BASH-no}" != "no" ]; then
+    	[ -r /etc/bashrc ] && . /etc/bashrc
+    fi
     ```
     
     
