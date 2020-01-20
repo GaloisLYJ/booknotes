@@ -19,4 +19,9 @@
     - [第7章 理解Linux文件权限](https://github.com/GaloisLYJ/booknotes/blob/master/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8Eshell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E5%A4%A7%E5%85%A8/%E7%AC%AC7%E7%AB%A0%20%E7%90%86%E8%A7%A3Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90.md)
     - [第9章 安装软件程序](https://github.com/GaloisLYJ/booknotes/blob/master/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8Eshell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E5%A4%A7%E5%85%A8/%E7%AC%AC9%E7%AB%A0%20%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E7%A8%8B%E5%BA%8F.md)
     - [第10章 使用编辑器](https://github.com/GaloisLYJ/booknotes/blob/master/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8Eshell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E5%A4%A7%E5%85%A8/%E7%AC%AC10%E7%AB%A0%20%E4%BD%BF%E7%94%A8%E7%BC%96%E8%BE%91%E5%99%A8.md)
-
+    
+    ```
+    第二部分 shell脚本编程技术
+    ```
+    
+    - 第11章 构建基本脚本
