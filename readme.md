@@ -26,3 +26,4 @@
     
     - [第11章 构建基本脚本](https://github.com/GaloisLYJ/booknotes/blob/master/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8Eshell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E5%A4%A7%E5%85%A8/%E7%AC%AC11%E7%AB%A0%20%E6%9E%84%E5%BB%BA%E5%9F%BA%E6%9C%AC%E8%84%9A%E6%9C%AC.md)
     - [第12章 使用结构化命令](https://github.com/GaloisLYJ/booknotes/blob/master/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8Eshell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E5%A4%A7%E5%85%A8/%E7%AC%AC12%E7%AB%A0%20%E4%BD%BF%E7%94%A8%E7%BB%93%E6%9E%84%E5%8C%96%E5%91%BD%E4%BB%A4.md)
+    - [第13章 更多的结构化命令](https://github.com/GaloisLYJ/booknotes/blob/master/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8Eshell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E5%A4%A7%E5%85%A8/%E7%AC%AC13%E7%AB%A0%20%E6%9B%B4%E5%A4%9A%E7%9A%84%E7%BB%93%E6%9E%84%E5%8C%96%E5%91%BD%E4%BB%A4.md)
