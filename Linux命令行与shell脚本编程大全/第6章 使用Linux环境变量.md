@@ -49,23 +49,24 @@
 ### 定位系统环境变量
 - 登录shell
     - `/etc/profile`
-            
-        
-            系统默认的bash shell主启动文件,系统上每个用户登录时都会执行。
+      
+          系统默认的bash shell主启动文件,系统上每个用户登录时都会执行。
     - `$HOME/.bash_profile`
     - $HOME/.bashrc
     - $HOME/.bash_login
     - $HOME/.profile
     
-            其他启动文件提供一个用户专属的启动文件来定义该用户所用到的环境变量。大多数Linux发行版只用这四个启动文件中的一到两个。以.号开头,默认隐藏。位于HOME目录下,在每次启动bash shell会话时生效。
-            
-            shell会按照按照下列顺序，运行第一个被找到的文件，余下的则被忽略：
-            $HOME/.bash_profile
-            $HOME/.bash_login
-            $HOME/.profile
-            注意，这个列表中并没有$HOME/.bashrc文件。这是因为该文件通常通过其他文件运行的。
-            
-            $HOME表示的是某个用户的主目录。它和波浪号（~）的作用一样。
+        ```shell
+        其他启动文件提供一个用户专属的启动文件来定义该用户所用到的环境变量。大多数Linux发行版只用这四个启动文件中的一到两个。以.号开头,默认隐藏。位于HOME目录下,在每次启动bash shell会话时生效。
+        
+        shell会按照按照下列顺序，运行第一个被找到的文件，余下的则被忽略：
+        $HOME/.bash_profile
+        $HOME/.bash_login
+        $HOME/.profile
+        注意，这个列表中并没有$HOME/.bashrc文件。这是因为该文件通常通过其他文件运行的。
+        
+        $HOME表示的是某个用户的主目录。它和波浪号（~）的作用一样。
+        ```
         .bash_profile启动文件会先去检查HOME目录中是不是还有一个叫.bashrc的启动文件。如果有的话，会先执行启动文件里面的命令。
     
 - 交互式shell进程
@@ -83,7 +84,7 @@
         系统执行脚本时用的shell,没有命令行提示符。但是当你在系统上运行脚本时,也许希望能够运行一些特定启动的命令。
     ​	bash shell提供了`BASH_ENV环境变量`,当启动一个非交互式shell即脚本shell时,会检查这个环境变量来查看要执行的启动文件。如果有指定文件,shell会执行该文件里的命令,通常就包括shell脚本变量设置。
     ​    
-        `printenv BASH_ENV` `echo $BASH_ENV` 这个环境变量默认情况未设置。返回一个空行。
+    ​    `printenv BASH_ENV` `echo $BASH_ENV` 这个环境变量默认情况未设置。返回一个空行。
     
     ​	如果`BASH_ENV`变量没有设置,shell脚本可以通过启动一个子shell执行,而`子shell可以继承父shell导出过的变量`。
     
@@ -120,7 +121,7 @@
     
     Mac下  alias 个人用户持久性配置  实例
     
-    ```
+    ```shell
     # ~/study/booknotes [master ✗ (74af234)] [20:21:51]
     ➜ echo $BASH_ENV
     
@@ -183,7 +184,7 @@
     
     在`~/bashrc`和`~/bash_profile`中定义的变量，在非交互式shell中也是可以执行的
     
-    ```
+    ```shell
     # ~/study/example [20:52:35]
     ➜ cat exampleEchoBash.sh
     
@@ -206,7 +207,7 @@
     
     但是配置的alias命令只可以在bash(交互式shell)中使用，不能在脚本中(非交互式shell)使用
     
-    ```
+    ```shell
     # ~/study/example [20:57:27]
     ➜ cat exampleC.sh
     

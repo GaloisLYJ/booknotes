@@ -11,7 +11,7 @@
 
 ​	一个专门的文件来将用户名匹配到对应的UID值，root的UID固定是0
 
-```
+```shell
 $ cat /etc/passwd
 root:x:0:0:root:/root:/bin/bash
 mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/bash
@@ -37,7 +37,7 @@ mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/bash
 
 ​	提供对Linux系统密码管理的更多控制，只有root用户和特定的程序(如登录程序)才能访问
 
-```
+```shell
 $ cat /etc/shadow
 rich:$1$.FfcK0ns$f1UgiyHQ25wrB/hykCn020:11627:0:99999:7:::
 
@@ -56,7 +56,7 @@ rich:$1$.FfcK0ns$f1UgiyHQ25wrB/hykCn020:11627:0:99999:7:::
 
  - `/usr/sbin/useradd -D` `D`查看Linux系统创建新用户时使用的默认值
 
-   ```
+   ```shell
    # /usr/sbin/useradd -D
    GROUP=100	GID为100的公共组
    HOME=/home	新用户的HOME目录将位于/home/loginname;
@@ -82,7 +82,7 @@ rich:$1$.FfcK0ns$f1UgiyHQ25wrB/hykCn020:11627:0:99999:7:::
 
  - `usermod` 能用来修改/etc/passwd文件中的大部分字段，跟`useradd`命令参数一样
 
-   ```
+   ```shell
    -l 修改用户账户的登录名。
    -L 锁定账户，使用户无法登录，无需删除账户和用户数据。
    -p 修改账户的密码。
@@ -151,7 +151,7 @@ GID
 
 ### 使用文件权限符
 
-```
+```shell
 -rwxrwxr-x 1 rich rich 4882 2010-09-18 13:58 myprog
 第一个字符：-代表文件 d代表目录 l代表链接 c代表字符型设备 b代表块设备 n代表网络设备
 连续三组字符： 属主 属组 其他用户 的权限，r可读，w可写，x可执行
@@ -165,7 +165,7 @@ r-x：系统上其他人。
 
 - `umask` 用来设置所创文件和目录的默认权限
 
-  ```
+  ```shell
   $ touch newfile
   $ ls -al newfile
   -rw-r--r-- 1 rich rich 0 Sep 20 19:16 newfile
@@ -186,7 +186,7 @@ r-x：系统上其他人。
 
 - Linux文件权限码
 	
-	```
+	```shell
 	表7-5 Linux文件权限码
 	权 限 	二进制值 	八进制值 	 描 述
 	--- 	  000 		 0 			没有任何权限
@@ -225,9 +225,9 @@ r-x：系统上其他人。
 
 - `chown test. newfile` 如果Linux系统采用和用户登录名匹配的组名，可以只用一个条目就改变二者
 
-  ```
-  -R选项配合通配符可以递归地改变子目录和文件的所属关系。
-  -h选项可以改变该文件的所有符号链接文件的所属关系
+  ```shell
+  -R 选项配合通配符可以递归地改变子目录和文件的所属关系。
+  -h 选项可以改变该文件的所有符号链接文件的所属关系
   ```
   
 - `chgrp shared newfile` 更改文件或目录的默认属组
@@ -252,7 +252,7 @@ Linux还为每个文件和目录存储了3个额外的信息位。
 
 ​	启用SGID位后，你可以强制在一个共享目录下创建的新文件都属于该目录的属组，这个组也就成为了每个用户的属组。SGID可通过chmod命令设置。它会加到标准3位八进制值之前（组成4位八进制值），或者在符号模式下用符号s。
 
-```
+```shell
 chmod SUID、SGID和粘着位的八进制值
 二进制值 		 八进制值 			描 述
 000 			0 				 所有位都清零
@@ -267,7 +267,7 @@ chmod SUID、SGID和粘着位的八进制值
 
 ​	用`mkdir`命令来创建希望共享的目录。然后通过`chgrp命令将目录的默认属组改为包含所有需要共享文件的用户的组`（你必须是该组的成员）。最后，`chmod g+s`将目录的SGID位置位，以保证目录中新建文件都用shared作为默认属组。为了让这个环境能正常工作，所有组成员都需把他们的umask值设置成文件对属组成员可写。在例子中，umask改成了`002`，所以文件对属组是可写的。
 
-```
+```shell
 $ mkdir testdir
 $ ls -l
 drwxrwxr-x 2 rich rich 4096 Sep 20 23:12 testdir/

@@ -17,8 +17,8 @@
   
   ```
     bash shell命令或运行shell脚本 是生成子shell的第一种方式
-    ```
-    
+  ```
+  
 - `pwd;ls;cd/etc;pwd;cd;pwd;ls;echo $BASH_SUBSHELL` 命令列表,依次执行
 
 - `(pwd;ls;cd/etc;pwd;cd;pwd;ls;echo $BASH_SUBSHELL)` 进程列表,生成1个子shell执行
@@ -29,7 +29,7 @@
 
   ```
     	进程列表 是生成子shell的第二种方式。在shell脚本中，经常使用子shell进行多进程处理，但是使用子shell的成本不菲，会明显拖慢处理速度。在交互式的CLI shell会话中，子shell同样存在问题。它并非真正的多进程处理，因为终端控制着子shell的I/O
-    ```
+  ```
 ---
 
 ## 子shell用法
@@ -48,17 +48,17 @@
 在CLI中运用子shell的创造性方法:
 
 - `将进程列表置入后台模式`
-    
+  
     - `(sleep 2 ; echo $BASH_SUBSHELL ; sleep 2)&`
     
     - `(tar -cf Rich.tar /home/rich ; tar -cf My.tar /home/christine)&` 使用tar创建备份文件是有效利用后台进程列表的一个更实用的例子。
       
       ```
     	注意，后台模式中表明单一级子shell的数字1显示在了提示符的旁边,只需按一个回车键可得到另一个提示符。你既可以在子shell中进行繁重的处理工作，同时也不会让子shell的I/O受制于终端。
-    ```
+    	```
     
 - 协程
-    
+  
     - `coproc sleep 10` 创建子shell并执行命令,返回作业号和进程ID
     
     - `jobs` 可以看到执行的命令是`coproc COPROC sleep 10` `COPROC`是`coproc`命令给进程起的名字
@@ -70,7 +70,7 @@
       ```
     
 - 同时使用创建嵌套的子shell
-    
+  
     - `coproc ( sleep 10; sleep 2 )`
     
     - `jobs`
@@ -103,8 +103,8 @@
   
   ```
     对于有多种实现的命令,如果想要使用其外部命令实现,直接指明对应的文件就可以,如`/bin/pwd`
-    ```
-    
+  ```
+  
 - `history` 查看最近用过的命令列表,通常历史记录会保存近1000条
 
 - `!!` 代表刚刚用过的那条命令
