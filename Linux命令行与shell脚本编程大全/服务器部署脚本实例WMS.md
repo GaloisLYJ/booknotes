@@ -1,9 +1,9 @@
-## 微服务部署脚本
+## 微服务项目部署脚本
 此脚本是基于SpringBoot、SpringCoud、Maven架构批量自动化部署服务脚本。
 `/home/admin` 下有 `sudo2` 类似名称的脚本，显示为绿色
 
 ```
-服务器IP：http://10.9.43.105
+服务器IP：10.9.43.105
 连接工具：BitVise
 打包方式：IDEA 总包PAAS maven install
 传输方式：工具拖动到对应war或jar替换
