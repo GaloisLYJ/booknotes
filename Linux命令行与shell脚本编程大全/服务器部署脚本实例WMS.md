@@ -11,7 +11,7 @@
 部署校测：http://10.9.43.105:8761 (SpringCloud注册发现，可以看到在运行的服务)
 ```
 
-```
+```shel
 nohup java -jar xxx.jar 
 ```
 以后台方式运行jar任务
