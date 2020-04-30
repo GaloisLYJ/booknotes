@@ -423,16 +423,431 @@ shell脚本可以帮助我们将文本文件中各种数据的日常处理任务
     $
     ```
 
-  - 
+  - 使用文本模式过滤器
+
+    `sed` 编辑器允许指定文本模式来过滤出命令要作用的行
+
+    ```shell
+    /pattern/command
+    
+    只修改用户Samantha的默认shell，可以使用`sed`命令
+    $ grep Samantha /etc/passwd
+    Samantha:x:502:502::/home/Samantha:/bin/bash
+    $
+    $ sed '/Samantha/s/bash/csh/' /etc/passwd
+    root:x:0:0:root:/root:/bin/bash
+    bin:x:1:1:bin:/bin:/sbin/nologin
+    [...]
+    Christine:x:501:501:Christine B:/home/Christine:/bin/bash
+    Samantha:x:502:502::/home/Samantha:/bin/csh
+    Timothy:x:503:503::/home/Timothy:/bin/bash
+    $
+    ```
+
+  - 命令组合
+
+    ```shell
+    在单行上执行多条命令，可以用花括号将多条命令组合在一起
+    $ sed '2{
+    > s/fox/elephant/
+    > s/dog/cat/
+    > }' data1.txt
+    The quick brown fox jumps over the lazy dog.
+    The quick brown elephant jumps over the lazy cat.
+    The quick brown fox jumps over the lazy dog.
+    The quick brown fox jumps over the lazy dog.
+    $
+    两条命令都会作用到该地址上。当然，也可以在一组命令前指定一个地址区间。
+    $ sed '3,${
+    > s/brown/green/
+    > s/lazy/active/
+    > }' data1.txt
+    The quick brown fox jumps over the lazy dog.
+    The quick brown fox jumps over the lazy dog.
+    The quick green fox jumps over the active dog.
+    The quick green fox jumps over the active dog.
+    $
+    sed 编辑器会将所有命令作用到该地址区间内的所有行上。
+    ```
 
 - 删除行
 
+  ```shell
+  如果没有加入寻址模式，流中所有的文本行都会被删除
+  $ cat data1.txt
+  The quick brown fox jumps over the lazy dog
+  The quick brown fox jumps over the lazy dog
+  The quick brown fox jumps over the lazy dog
+  The quick brown fox jumps over the lazy dog
+  $
+  $ sed 'd' data1.txt
+  $
+  
+  通过行号指定
+  $ cat data6.txt
+  This is line number 1.
+  This is line number 2.
+  This is line number 3.
+  This is line number 4.
+  $
+  $ sed '3d' data6.txt
+  This is line number 1.
+  This is line number 2.
+  This is line number 4.
+  $
+  
+  通过行区间指定
+  $ sed '2,3d' data6.txt
+  This is line number 1.
+  This is line number 4.
+  $
+  
+  通过特殊的文件结尾字符
+  $ sed '3,$d' data6.txt
+  This is line number 1.
+  This is line number 2.
+  $
+  
+  也可以模式匹配，`sed` 编辑器会删掉包含匹配指定模式的行。
+  $ sed '/number 1/d' data6.txt
+  This is line number 2.
+  This is line number 3.
+  This is line number 4.
+  $
+  
+  也可以使用两个文本模式来删除某个区间内的行
+  sed 编辑器会删除两个指定行之间的所有行（包括指定的行）。
+  $ sed '/1/,/3/d' data6.txt
+  This is line number 4.
+  $
+  ```
+
 - 插入和附加文本
+
+  ```shell
+   插入（insert）命令（i）会在指定行前增加一个新行；
+   附加（append）命令（a）会在指定行后增加一个新行。
+  
+  它们不能在单个命令行上使用,必须指定是要将行插入还是附加到另一行
+  sed '[address]command\
+  
+  $ echo "Test Line 2" | sed 'i\Test Line 1'
+  Test Line 1
+  Test Line 2
+  $
+  当使用附加命令时，文本会出现在数据流文本的后面。
+  $ echo "Test Line 2" | sed 'a\Test Line 1'
+  Test Line 2
+  Test Line 1
+  $
+  
+  将一个新行插入到数据流第三行前。
+  $ sed '3i\
+  > This is an inserted line.' data6.txt
+  This is line number 1.
+  This is line number 2.
+  This is an inserted line.
+  This is line number 3.
+  This is line number 4.
+  $
+  将一个新行附加到数据流中第三行后。
+  $ sed '3a\
+  > This is an appended line.' data6.txt
+  This is line number 1.
+  This is line number 2.
+  This is line number 3.
+  This is an appended line.
+  This is line number 4.
+  $
+  
+  将新行附加到数据流的末尾，只要用代表数据最后一行的美元符就可以了。
+  $ sed '$a\
+  > This is a new line of text.' data6.txt
+  This is line number 1.
+  This is line number 2.
+  This is line number 3.
+  This is line number 4.
+  This is a new line of text.
+  $
+  
+  要插入或附加多行文本，就必须对要插入或附加的新文本中的每一行使用反斜线，直到最后一行。
+  $ sed '1i\
+  > This is one line of new text.\
+  > This is another line of new text.' data6.txt
+  This is one line of new text.
+  This is another line of new text.
+  This is line number 1.
+  This is line number 2.
+  This is line number 3.
+  This is line number 4.
+  $
+  ```
 
 - 修改行
 
+  ```shell
+  在`sed`命令中单独指定新行。
+  $ sed '3c\
+  > This is a changed line of text.' data6.txt
+  This is line number 1.
+  This is line number 2.
+  This is a changed line of text.
+  This is line number 4.
+  $
+  
+  也可以用文本模式来寻址。
+  $ sed '/number 3/c\
+  > This is a changed line of text.' data6.txt
+  This is line number 1.
+  This is line number 2.
+  This is a changed line of text.
+  This is line number 4.
+  $
+  
+  会修改它匹配的数据流中的任意文本行。
+  $ cat data8.txt
+  This is line number 1.
+  This is line number 2.
+  This is line number 3.
+  This is line number 4.
+  This is line number 1 again.
+  This is yet another line.
+  This is the last line in the file.
+  $
+  $ sed '/number 1/c\
+  > This is a changed line of text.' data8.txt
+  This is a changed line of text.
+  This is line number 2.
+  This is line number 3.
+  This is line number 4.
+  This is a changed line of text.
+  This is yet another line.
+  This is the last line in the file.
+  $
+  
+  使用地址区间
+  $ sed '2,3c\
+  > This is a new line of text.' data6.txt
+  This is line number 1.
+  This is a new line of text.
+  This is line number 4.
+  $
+  sed编辑器会用这一行文本来替换数据流中的两行文本，而不是逐一修改这两行文本。
+  ```
+
 - 转换命令
+
+  转换（transform）命令（y）是唯一可以处理单个字符的sed编辑器命令
+
+  ```shell
+  [address]y/inchars/outchars/
+  
+  inchars模式中指定字符的每个实例都会被替换成outchars模式中相同位置的那个字符。
+  $ sed 'y/123/789/' data8.txt
+  This is line number 7.
+  This is line number 8.
+  This is line number 9.
+  This is line number 4.
+  This is line number 7 again.
+  This is yet another line.
+  This is the last line in the file.
+  $
+  
+  转换命令是一个全局命令，也就是说，它会文本行中找到的所有指定字符自动进行转换，而不会考虑它们出现的位置。
+  $ echo "This 1 is a test of 1 try." | sed 'y/123/456/'
+  This 4 is a test of 4 try.
+  $
+  sed 编辑器转换了在文本行中匹配到的字符1的两个实例。你无法限定只转换在特定地方出现的字符。
+  ```
 
 - 回顾打印
 
+  ```shell
+  有3个命令可以用于打印数据流中的信息
+   p命令用来打印文本行；
+   等号（=）命令用来打印行号；
+   l（小写的L）命令用来列出行。
+  ```
+
+  - 打印行
+
+    ```shell
+    $ echo "this is a test" | sed 'p'
+    this is a test
+    this is a test
+    $
+    
+    常见用法：打印包含匹配文本模式的行。
+    $ cat data6.txt
+    This is line number 1.
+    This is line number 2.
+    This is line number 3.
+    This is line number 4.
+    $
+    $ sed -n '/number 3/p' data6.txt
+    This is line number 3.
+    $
+    
+    -n 选项，可以禁止输出其他行，只打印包含匹配文本模式的行。也可以用它来快速打印数据流中的某些行。
+    $ sed -n '2,3p' data6.txt
+    This is line number 2.
+    This is line number 3.
+    $
+    ```
+
+  - 打印行号
+
+    ```shell
+    等号命令会打印行在数据流中的当前行号。行号由数据流中的换行符决定
+    $ cat data1.txt
+    The quick brown fox jumps over the lazy dog.
+    The quick brown fox jumps over the lazy dog.
+    The quick brown fox jumps over the lazy dog.
+    The quick brown fox jumps over the lazy dog.
+    $
+    $ sed '=' data1.txt
+    1
+    The quick brown fox jumps over the lazy dog.
+    2
+    The quick brown fox jumps over the lazy dog.
+    3
+    The quick brown fox jumps over the lazy dog.
+    4
+    The quick brown fox jumps over the lazy dog.
+    $
+    
+    在数据流中查找特定文本模式的行号
+    $ sed -n '/number 4/{
+    > =
+    > p
+    > }' data6.txt
+    4
+    This is line number 4.
+    $
+    -n 选项，你就能让`sed`编辑器只显示包含匹配文本模式的行的行号和文本。
+    ```
+
+  - 列出行
+
+    列出（list）命令（l）可以打印数据流中的文本和不可打印的ASCII字符。任何不可打印字符要么在其八进制值前加一个反斜线，要么使用标准C风格的命名法（用于常见的不可打印字符），比如\t，来代表制表符。
+
+    ```shell
+    制表符的位置使用\t来显示。行尾的美元符表示换行符
+    $ cat data9.txt
+    This line contains tabs.
+    $
+    $ sed -n 'l' data9.txt
+    This\tline\tcontains\ttabs.$
+    $
+    
+    data10.txt文本文件包含了一个转义控制码来产生铃声。当用cat命令来显示文本文件时，你看不到转义控制码，只能听到声音（如果你的音箱打开的话）。但是，利用列出命令，你就能显示出所使用的转义控制码。
+    $ cat data10.txt
+    This line contains an escape character.
+    $
+    $ sed -n 'l' data10.txt
+    This line contains an escape character. \a$
+    $
+    ```
+
 - 使用 `sed` 处理文件
+
+  - 写入文件
+
+    filename 可以使用相对路径或绝对路径，但不管是哪种，运行sed编辑器的用户都必须有文件的写权限。地址可以是sed中支持的任意类型的寻址方式，例如单个行号、文本模式、行区间或文本模式。
+
+    ```shell
+    [address]w filename
+    
+    将数据流中的前两行打印到一个文本文件中。
+    $ sed '1,2w test.txt' data6.txt
+    This is line number 1.
+    This is line number 2.
+    This is line number 3.
+    This is line number 4.
+    $
+    $ cat test.txt
+    This is line number 1.
+    This is line number 2.
+    $
+    
+    要根据一些公用的文本值从主文件中创建一份数据文件
+    $ cat data11.txt
+    Blum, R Browncoat
+    McGuiness, A Alliance
+    Bresnahan, C Browncoat
+    Harken, C Alliance
+    $
+    $ sed -n '/Browncoat/w Browncoats.txt' data11.txt
+    $
+    $ cat Browncoats.txt
+    Blum, R Browncoat
+    Bresnahan, C Browncoat
+    $
+    sed编辑器会只将包含文本模式的数据行写入目标文件。
+    ```
+
+  - 从文件读取数据
+
+    读取（read）命令（r）允许你将一个独立文件中的数据插入到数据流中。
+
+    ```shell
+    [address]r filename
+    
+    在读取命令中使用地址区间，只能指定单独一个行号或文本模式地址。sed编辑器会将文件中的文本插入到指定地址后。
+    $ cat data12.txt
+    This is an added line.
+    This is the second added line.
+    $
+    $ sed '3r data12.txt' data6.txt
+    This is line number 1.
+    This is line number 2.
+    This is line number 3.
+    This is an added line.
+    This is the second added line.
+    This is line number 4.
+    $
+    
+    sed 编辑器会将数据文件中的所有文本行都插入到数据流中。同样的方法在使用文本模式地址时也适用。
+    $ sed '/number 2/r data12.txt' data6.txt
+    This is line number 1.
+    This is line number 2.
+    This is an added line.
+    This is the second added line.
+    This is line number 3.
+    This is line number 4.
+    $
+    
+    要在数据流的末尾添加文本，只需用美元符地址符
+    $ sed '$r data12.txt' data6.txt
+    This is line number 1.
+    This is line number 2.
+    This is line number 3.
+    This is line number 4.
+    This is an added line.
+    This is the second added line.
+    $
+    
+    读取命令的另一个很酷的用法是和删除命令配合使用：利用另一个文件中的数据来替换文件中的占位文本。
+    $ cat notice.std
+    Would the following people:
+    LIST
+    please report to the ship's captain.
+    $
+    
+    $ sed '/LIST/{
+    > r data11.txt
+    > d
+    > }' notice.std
+    Would the following people:
+    Blum, R Browncoat
+    McGuiness, A Alliance
+    Bresnahan, C Browncoat
+    Harken, C Alliance
+    please report to the ship's captain.
+    $
+    现在占位文本已经被替换成了数据文件中的名单。
+    ```
+
+    
+
+    
