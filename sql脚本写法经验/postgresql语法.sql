@@ -289,15 +289,19 @@ grant all on schema ehr_bak to hr;
 ------------ 权限赋予、回收实例 ------------start
 SELECT grantee, table_schema, table_name, string_agg(privilege_type, ', ') as privilege_type
 FROM information_schema.role_table_grants
-WHERE grantee = 'dev_bi' and privilege_type like '%UPDATE%'
+WHERE grantee = 'dev_bi' and privilege_type like '%SELECT%'
 group by grantee, table_schema, table_name;
 
 --收回update权限
 revoke update on table ehr_mid.mv_cq_rate_tj_month_group_by_jt from dev_bi;
 
+--收回select权限
+revoke select on ehr_bi.bi_xc_0014 from dev_bi;
+
 --赋予权限
-grant select on ehr_bi.bi_xc_0006 to dev_bi;
+grant select on ehr_bi.bi_xc_0023 to dev_bi;
 grant select,update on ehr_bi.bi_xc_0006 to dev_bi;
+revoke select on ehr_bi.bi_xc_0006 from dev_bi;
 
 --批量回收权限，右下角选择CSV，复制黏贴可以拿出来脚本
 SELECT 'revoke update on table ' || table_schema || '.' || table_name || ' from dev_bi;'
@@ -318,17 +322,6 @@ grant usage on schema ehr_sync to dev_bi;
 --如果显示账户被锁定，则需要解锁
 --alter user dev_bi account unlock;
 -----------------------------------------------------------end
-
-
-
-
-
-
-
-
-
-
-
 
 
 ---------------------start------------------------

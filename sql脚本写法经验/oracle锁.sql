@@ -8,7 +8,7 @@ where l.object_id = o.object_id
 
 --如果有 kill掉 进程
 alter system kill session 'sid,serial#';
-alter system kill session '6113,18309';
+alter system kill session '2197,50178' immediate;
 
 --如果没有发生死锁，优先考虑是否有进程占用或挂起的情况，查询正在执行的sql语句
 SELECT b.sid      oracleID,
@@ -29,10 +29,10 @@ drop materialized view VW_PERSON_INFO;
 select * from V$MYSTAT;--查询当前sid
 select sid from V$MYSTAT where rownum=1;--6275
 
-select * from V$SESSION where sid = '6092';
-alter system kill session '4951,18568';
+select * from V$SESSION where sid = '5454';
+alter system kill session '5454,53104' immediate ;
 
-grant select on V$MYSTAT to hrl; --把某个系统视图的查看权限赋给用户hr
+grant select on V$MYSTAT to hr; --把某个系统视图的查看权限赋给用户hr
 
 --事务 事务的撤销段号，事务的槽位号，事务的序列号，事务的状态
 select XIDUSN,XIDSLOT,XIDSQN,STATUS from V$TRANSACTION;
@@ -40,7 +40,7 @@ select XIDUSN,XIDSLOT,XIDSQN,STATUS from V$TRANSACTION;
 --查询这个sid上的锁 TYPE：TX 事务锁，TM 表锁，AE 物化视图锁
 select sid,type,id1,id2,decode(lmode,0,'None',1,'Null',2,'Row share',3,'Row Exclusive',4,'Share',5,'Share Row Exclusive',6,'Exclusive') lock_mode,
                         decode(request,0,'None',1,'Null',2,'Row share',3,'Row Exclusive',4,'Share',5,'Share Row Exclusive',6,'Exclusive') request_mode,block
-from V$LOCK where sid = '6092';
+from V$LOCK where TYPE = 'AE' and sid = '5454';
 --block 为2说明阻塞了2个别的sid任务
 
 /*
@@ -58,13 +58,13 @@ ID2 字段：
 --将上述查到的锁区域信息id1\id2代入得到受影响的sid
 select sid,type,id1,id2,decode(lmode,0,'None',1,'Null',2,'Row share',3,'Row Exclusive',4,'Share',5,'Share Row Exclusive',6,'Exclusive') lock_mode,
                         decode(request,0,'None',1,'Null',2,'Row share',3,'Row Exclusive',4,'Share',5,'Share Row Exclusive',6,'Exclusive') request_mode,block
-from V$LOCK where ID1='133' and ID2 = '0' and sid = '6092';
+from V$LOCK where ID1='133' and ID2 = '0' and sid = '5454';
 
 --查询v$enqueue_lock来获得锁定队列中的session信息 查出来的东西都在请求AE物化视图锁，而且获得锁的关系有队列的顺序关系
 select sid,type,decode(request,0,'None',1,'Null',2,'Row share',3,'Row Exclusive',4,'Share',5,'Share Row Exclusive',6,'Exclusive') request_mode
 from V$ENQUEUE_LOCK where SID in (
     select sid
-    from V$LOCK where ID1='133' and ID2 = '0' and SID = '6092'
+    from V$LOCK where ID1='133' and ID2 = '0' and SID = '5454'
 );
 
 --查询锁的持有等待时间，有了时间就能判断锁有没有问题
@@ -75,15 +75,29 @@ select a.sid blocker_sid,a.serial#,a.username as blocker_username,b.type,
        c.ctime time_waited
 from V$LOCK b,V$ENQUEUE_LOCK c,V$SESSION a
 where a.sid = b.sid and b.id1 = c.id1(+) and b.id2 = c.id2(+) and c.type(+)='AE' and b.type='AE' and b.block>0
-and a.sid = '6092'
+and a.sid = '5454'
 order by time_held desc,time_waited desc;
 
 alter system kill session 'sid,serial';
-alter system kill session '5825,4879';
+alter system kill session '6749,27695' immediate ;
+alter system kill session '1774,2677';
 
 --删掉最初始的导致ae锁的sid回话后重新执行物化视图语句，已经可以成功获得锁了，顺利秒级执行完毕，至此问题解决
-drop materialized view MV_CQ_RATE_DAY;
 drop materialized view VW_PERSON_INFO;
+
+--写成批量执行的脚本 杀死等待的sid
+select 'alter system kill session ''' || t1.watier_sid || ',' || t2.SERIAL# || '''' || ' IMMEDIATE;' from
+(select a.sid blocker_sid,a.serial#,a.username as blocker_username,b.type,
+       decode(b.lmode,0,'None',1,'Null',2,'Row share',3,'Row Exclusive',4,'Share',5,'Share Row Exclusive',6,'Exclusive') lock_mode,
+       b.ctime as time_held,c.sid as watier_sid,
+       decode(c.request,0,'None',1,'Null',2,'Row share',3,'Row Exclusive',4,'Share',5,'Share Row Exclusive',6,'Exclusive') request_mode,
+       c.ctime time_waited
+from V$LOCK b,V$ENQUEUE_LOCK c,V$SESSION a
+where a.sid = b.sid and b.id1 = c.id1(+) and b.id2 = c.id2(+) and c.type(+)='AE' and b.type='AE' and b.block>0
+and a.sid = c.sid
+order by time_held desc,time_waited desc) t1
+left join V$SESSION t2
+on t1.watier_sid = t2.sid;
 
 --得到最初的阻塞的sid4466,查询这个session的信息 5545 23849
 select * from V$SESSION where sid = '5545';
@@ -92,7 +106,7 @@ where s.paddr = p.addr and s.SID='5545' and s.SERIAL#='23849';
 
 --通过锁找问题sql
 select * from dba_ddl_locks where OWNER = 'BYDHRZS' and NAME not in ('BYDHRZS');
-select * from v$session where sid in ('6588');--问题sql_id 2wgravju950ss
+select * from v$session where sid in ('5545');--问题sql_id 2wgravju950ss
 select * from v$sql where SQL_ID = '2wgravju950ss';--找到问题sql
 select * from V$SESSION where sid = '6588';
 alter system kill session '6588,16322';
