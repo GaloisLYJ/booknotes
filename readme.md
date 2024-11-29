@@ -10,3 +10,5 @@
 
 - [《Linux命令行与shell脚本编程大全》](https://github.com/GaloisLYJ/booknotes/tree/master/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8Eshell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E5%A4%A7%E5%85%A8)
 
+- [sql脚本写法经验](https://github.com/GaloisLYJ/booknotes/tree/master/sql%E8%84%9A%E6%9C%AC%E5%86%99%E6%B3%95%E7%BB%8F%E9%AA%8C)
+- [云服务器之科学上网](https://github.com/GaloisLYJ/booknotes/tree/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91)
