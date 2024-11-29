@@ -1,6 +1,6 @@
 select * from dba_objects where OBJECT_NAME = 'VW_PERSON_INFO';
 select * from dba_objects where OBJECT_NAME = 'VW_PERSON_INFO_N';--drop掉的用这语句就查不出来记录了
-select * from dba_objects where OBJECT_NAME = 'VW_PERSON_INFO_NEW';--发现MATERIALIZED VIEW行的status是INVALID 无效
+select * from dba_objects where OBJECT_NAME = 'ADS_HR_SLR_API8380';--发现MATERIALIZED VIEW行的status是INVALID 无效
 
 /*通常，物化视图的状态会变为无效的原因可能包括：
 
@@ -8,19 +8,20 @@ select * from dba_objects where OBJECT_NAME = 'VW_PERSON_INFO_NEW';--发现MATERIA
 物化视图的定义发生了变化，如修改了查询语句或其他属性，但未进行重新编译。
 物化视图依赖的对象状态发生了变化，如依赖的函数被修改或重新编译。*/
 
-ALTER MATERIALIZED VIEW VW_PERSON_INFO_NEW COMPILE;--执行这句重新编译后变为有效
+ALTER MATERIALIZED VIEW ads_hr_slr_api8380 COMPILE;--执行这句重新编译后变为有效
 
 
 --查询对象依赖关系 DBA_DEPENDENCIES
-select * from DBA_DEPENDENCIES where NAME = 'VW_PERSON_INFO';
+select * from DBA_DEPENDENCIES where NAME = 'ads_hr_slr_api8380';
+select * from DBA_DEPENDENCIES where NAME = 'ADS_HR_SLR_API8380';
 select * from DBA_DEPENDENCIES where NAME = 'VW_PERSON_INFO_N';
 
 --查看物化视图的最后一次刷新时间
 SELECT mview_name, owner, last_refresh_date
-FROM DBA_MVIEWS where MVIEW_NAME = 'VW_PERSON_INFO_NEW';
+FROM DBA_MVIEWS where MVIEW_NAME = 'ADS_HR_SLR_API8380';
 
 SELECT owner, mview_name, query, container_name, updatable, refresh_mode, refresh_method, build_mode, last_refresh_type, STALENESS
-FROM all_mviews where MVIEW_NAME in ('VW_PERSON_INFO_NEW');
+FROM all_mviews where MVIEW_NAME in ('ADS_HR_SLR_API8380');
 --VALID：物化视图是有效的，可以使用。
 --INVALID：物化视图是无效的，可能需要重新编译或者修复。
 --NEEDS_COMPILE：物化视图需要重新编译。
@@ -28,20 +29,20 @@ FROM all_mviews where MVIEW_NAME in ('VW_PERSON_INFO_NEW');
 --STALE：物化视图需要刷新以保持数据的一致性。
 --UNUSABLE：物化视图不可用，通常是因为与其相关联的对象发生了变化。
 
-DROP MATERIALIZED VIEW VW_PERSON_INFO_NEW;
+DROP MATERIALIZED VIEW ADS_HR_SLR_API8380;
 SELECT * FROM V$VERSION;
 
 --强制终止正在使用物化视图的会话
 ALTER SYSTEM KILL SESSION 'sid,serial#';
 
 --在Oracle中，您可以通过查询数据字典视图DBA_MVIEWS来找出物化视图状态
-select * from DBA_MVIEWS where MVIEW_NAME = 'VW_PERSON_INFO_NEW';
+select * from DBA_MVIEWS where MVIEW_NAME = 'ADS_HR_SLR_API8380';
 
 --在Oracle中，您可以通过查询数据字典视图DBA_MVIEWS来找出当前正在使用物化视图的会话。
 SELECT s.sid, s.serial#, s.username, s.osuser, s.machine, s.program, m.owner, m.mview_name
 FROM V$SESSION s
 JOIN DBA_MVIEWS m ON s.username = m.owner
-WHERE s.username IS NOT NULL and m.MVIEW_NAME = 'VW_PERSON_INFO_NEW';
+WHERE s.username IS NOT NULL and m.MVIEW_NAME = 'ADS_HR_SLR_API8380';
 
 --拼接出可执行的语句
 SELECT
@@ -49,11 +50,26 @@ SELECT
     s.sid, s.serial#, s.username, s.osuser, s.machine, s.program, m.owner, m.mview_name
 FROM V$SESSION s
 JOIN DBA_MVIEWS m ON s.username = m.owner
-WHERE s.username IS NOT NULL and OSUSER = 'liu.yujian1' and m.MVIEW_NAME = 'VW_PERSON_INFO_NEW';
+WHERE s.username IS NOT NULL and OSUSER = 'liu.yujian1' and m.MVIEW_NAME = 'ADS_HR_SLR_API8380';
+
+alter system kill session '1343,62330' IMMEDIATE;
+drop materialized view ADS_HR_SLR_API8380;
+
+SELECT
+    'alter system kill session ''' || s.sid || ',' || s.serial# || '''' || ' IMMEDIATE;',
+    s.sid, s.serial#, s.username, s.osuser, s.machine, s.program, m.owner, m.mview_name
+FROM V$SESSION s
+JOIN DBA_MVIEWS m ON s.username = m.owner
+WHERE s.username IS NOT NULL and m.MVIEW_NAME = 'ADS_HR_SLR_API8380';
 --找到自己名字操作该视图的sid 全删掉只剩一个当前会话即可删除 DROP MATERIALIZED VIEW VW_PERSON_INFO;
 
 alter system kill session '7232,55176' IMMEDIATE;
 alter system kill session '7232,55176' IMMEDIATE;
+alter system kill session '7177,2996' IMMEDIATE;
+alter system kill session '3007,43431' IMMEDIATE;
+alter system kill session '723,17745' IMMEDIATE;
+
+
 --IMMEDIATE 可以用于一些难以杀死的会话
 
 
@@ -119,7 +135,7 @@ STALE：表示物化视图的数据已经过时，需要刷新以反映最新的基础表数据。
 FRESH：表示物化视图的数据是最新的，不需要刷新。*/
 
 begin
-    DBMS_MVIEW.refresh('BYDHRZS.VW_PERSON_INFO_NEW','C');
+    DBMS_MVIEW.refresh('BYDHRZS.ADS_HR_SLR_API8380','C');
 end;
 --此调用之后，视图处于fresh状态，但在对基础表执行任何DDL操作之后，视图将变为needs_compile状态
 
