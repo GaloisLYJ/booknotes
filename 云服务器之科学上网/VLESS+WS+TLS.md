@@ -1,4 +1,4 @@
-# VLESS+WS+TLS+(CDN)
+# VLESS+WS+TLS+WEB+(CDN)
 
 ---
 
@@ -7,7 +7,7 @@
 - [亿速云](https://uc.yisu.com/index.php/vhost/lightserver.html)
 - 操作系统：Ubuntu Server 20.04 LTS 64位
 
-![亿速云](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/%E4%BA%BF%E9%80%9F%E4%BA%91Ubuntu.png)
+![亿速云](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/%E4%BA%BF%E9%80%9F%E4%BA%91Ubuntu.png?token=GHSAT0AAAAAAC3ELS3CXLIQFBKCBBAOPEHOZ2NQMWQ)
 
 ## SSH连接工具
 
@@ -42,11 +42,11 @@
 
 - 已经将该域名DNS解析到该服务器IP
 
-  ![cf上进行dns解析](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/%E5%9F%9F%E5%90%8DDNS%E8%A7%A3%E6%9E%90.png)
+  ![cf上进行dns解析](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/%E5%9F%9F%E5%90%8DDNS%E8%A7%A3%E6%9E%90.png?token=GHSAT0AAAAAAC3ELS3CEIQSCNH246BZ6UUAZ2NQUWQ)
 
 - 解析成功验证
 
-  <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/dns%E8%A7%A3%E6%9E%90%E6%A0%A1%E9%AA%8C.png" alt="dns解析校验" style="zoom:60%;" />
+  <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/dns%E8%A7%A3%E6%9E%90%E6%A0%A1%E9%AA%8C.png?token=GHSAT0AAAAAAC3ELS3CCAIBDVF6PIRAXI64Z2NQUGA" alt="dns解析校验" style="zoom:60%;" />
 
 - 安装curl
 
@@ -70,7 +70,7 @@
 
 - 示例
 
-  ![Xray服务端配置](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Xray%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE.png)
+  ![Xray服务端配置](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Xray%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE.png?token=GHSAT0AAAAAAC3ELS3DJYGUZSZIKY3XNQVSZ2NQT2A)
 
 - 脚本执行过程配置实例
 
@@ -103,22 +103,57 @@
 
   没有MacOS
 
-  ![小飞机下载](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/V2rayN%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8B%E8%BD%BD.png)
+  ![V2rayN下载](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/V2rayN%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8B%E8%BD%BD.png?token=GHSAT0AAAAAAC3ELS3D3K2ILIFSP3HMFKWAZ2NQTNA)
 
 - V2rayN配置
 
-  ![V2rayN配置](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/V2rayN%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE.png)
+  ![V2rayN配置](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/V2rayN%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE.png?token=GHSAT0AAAAAAC3ELS3DV3RHOK7PYY7NSKFQZ2NQSZA)
 
   ```
   1、注意伪装域名、传输协议、端口、uuid、底层传输安全等关键配置即可。
   2、ws是websocket应用层传输协议和http并论，都基于tcp，tcp是传输层协议
+  3、右击管理员打开软件，开启tun模式(多切换下)，自动配置系统代理，全局模式下，可以打通所有软件和网页。
   ```
 
 
 - [V2rayNG 安卓下载](https://github.com/2dust/v2rayNG/releases)
 
-  ![V2rayN客户端](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/V2rayNG%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8B%E8%BD%BD.png)
+  ![V2rayN客户端](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/V2rayNG%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8B%E8%BD%BD.png?token=GHSAT0AAAAAAC3ELS3CEU3BLLKW3UCLLHP2Z2NQSJQ)
 
 ## google连接测试
 
-<img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/google%E8%BF%9E%E6%8E%A5%E6%B5%8B%E8%AF%95.png" alt="google" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/google%E8%BF%9E%E6%8E%A5%E6%B5%8B%E8%AF%95.png?token=GHSAT0AAAAAAC3ELS3CCCWU7F2WEQC765G2Z2NQRWQ" alt="google" style="zoom:50%;" />
+
+---
+
+
+
+## CDN  内容分部网络
+
+- [使用CDN的好处](https://www.youtube.com/watch?v=Azj8-1rdF-o&t=630s)
+  
+  - 防止IP被封
+  
+  - 解封IP服务器
+  
+  - 理论情况下可以加速网络
+  
+    ```
+    网络越狱实践除外，因为需要套国内CDN。
+    此外使用CF的人过多，可能已被GFW重点关照。
+    免费CDN链路会被防火墙劣化，使用加密数据基本不会命中缓存。
+    ```
+  
+- CloudFlare CDN
+
+  点亮云图案，等待两三分钟，ping v.zxe.us.kg检查IP是否不为服务器IP，即得到套了CDN的域名
+
+  ```
+  v.zxe.us.kg
+  ```
+
+  ![cf的CDN](D:\booknotes\云服务器之科学上网\file\CF的CDN.png)
+
+- CloudFlare CDN 节点配置使用
+
+  ![CDN节点配置](D:\booknotes\云服务器之科学上网\file\CDN节点配置.png)
