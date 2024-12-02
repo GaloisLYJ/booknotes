@@ -42,11 +42,11 @@
 
 - 已经将该域名DNS解析到该服务器IP
 
-  ![dns解析](D:\booknotes\云服务器之科学上网\file\域名DNS解析.png)
+  ![cf上进行dns解析](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/%E5%9F%9F%E5%90%8DDNS%E8%A7%A3%E6%9E%90.png)
 
 - 解析成功验证
 
-  <img src="D:\booknotes\云服务器之科学上网\file\dns解析校验.png" alt="dns解析校验" style="zoom:60%;" />
+  <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/dns%E8%A7%A3%E6%9E%90%E6%A0%A1%E9%AA%8C.png" alt="dns解析校验" style="zoom:60%;" />
 
 - 安装curl
 
@@ -70,7 +70,7 @@
 
 - 示例
 
-  ![Xray服务端配置](D:\booknotes\云服务器之科学上网\file\Xray服务端配置.png)
+  ![Xray服务端配置](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Xray%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE.png)
 
 - 脚本执行过程配置实例
 
@@ -103,11 +103,11 @@
 
   没有MacOS
 
-  ![小飞机下载](D:\booknotes\云服务器之科学上网\file\V2rayN客户端下载.png)
+  ![小飞机下载](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/V2rayN%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8B%E8%BD%BD.png)
 
 - V2rayN配置
 
-  ![V2rayN配置](D:\booknotes\云服务器之科学上网\file\V2rayN客户端配置.png)
+  ![V2rayN配置](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/V2rayN%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE.png)
 
   ```
   1、注意伪装域名、传输协议、端口、uuid、底层传输安全等关键配置即可。
@@ -117,7 +117,7 @@
 
 - [V2rayNG 安卓下载](https://github.com/2dust/v2rayNG/releases)
 
-  ![V2rayN客户端](D:\booknotes\云服务器之科学上网\file\V2rayNG客户端下载.png)
+  ![V2rayN客户端](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/V2rayNG%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8B%E8%BD%BD.png)
 
 ## google连接测试
 
