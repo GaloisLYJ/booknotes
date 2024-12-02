@@ -7,7 +7,7 @@
 - [亿速云](https://uc.yisu.com/index.php/vhost/lightserver.html)
 - 操作系统：Ubuntu Server 20.04 LTS 64位
 
-![亿速云](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/%E4%BA%BF%E9%80%9F%E4%BA%91Ubuntu.png?token=GHSAT0AAAAAAC3ELS3CXLIQFBKCBBAOPEHOZ2NQMWQ)
+![亿速云](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/%E4%BA%BF%E9%80%9F%E4%BA%91Ubuntu.png)
 
 ## SSH连接工具
 
@@ -50,19 +50,19 @@
   设备数、线程限速、端口限速配置。默认Enter
   ```
 
-  <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/SSR%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE.png?token=GHSAT0AAAAAAC3ELS3CDYVFQ2NVY7OOAFLUZ2NQOYA" style="zoom:60%;" />
+  <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/SSR%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE.png" style="zoom:60%;" />
 
 ## 客户端
 
 - 小飞机下载
 
-  ![小飞机下载](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/%E5%B0%8F%E9%A3%9E%E6%9C%BA%E4%B8%8B%E8%BD%BD.png?token=GHSAT0AAAAAAC3ELS3CA4YFVZLFGERGL6ZWZ2NQPXQ)
+  ![小飞机下载](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/%E5%B0%8F%E9%A3%9E%E6%9C%BA%E4%B8%8B%E8%BD%BD.png)
 
 - 小飞机配置
 
   复制SSR链接，右击小飞机图标选择剪贴板批量导入ssr链接
 
-  ![小飞机配置](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/SSR%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE.png?token=GHSAT0AAAAAAC3ELS3CYSJU6SYININCXNKUZ2NQRDA)
+  ![小飞机配置](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/SSR%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE.png)
 
   ```
   系统代理模式：PAC模式
@@ -71,4 +71,4 @@
 
   ## google连接测试
 
-  <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/google%E8%BF%9E%E6%8E%A5%E6%B5%8B%E8%AF%95.png?token=GHSAT0AAAAAAC3ELS3CCCWU7F2WEQC765G2Z2NQRWQ" alt="google" style="zoom:50%;" />
+  <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/google%E8%BF%9E%E6%8E%A5%E6%B5%8B%E8%AF%95.png" alt="google" style="zoom:50%;" />
