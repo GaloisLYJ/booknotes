@@ -46,7 +46,7 @@
   systemctl enable hysteria-server.service
   ```
 
-  ![hy2安装](D:\booknotes\云服务器之科学上网\file\hy2安装.png)
+  ![hy2安装](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/hy2%E5%AE%89%E8%A3%85.png)
 
   ```bash
   #生成自签证书
@@ -98,7 +98,7 @@
   systemctl status hysteria-server.service
   ```
 
-  ![hy2启动成功](D:\booknotes\云服务器之科学上网\file\hy2启动成功.png)
+  ![hy2启动成功](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/hy2%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F.png)
 
 - hy2其他管理脚本相关
 
@@ -117,17 +117,17 @@
 
 - [v2rayN下载]([https://github.com/2dust/v2rayN/releases/latest](https://bulianglin.com/g/aHR0cHM6Ly9naXRodWIuY29tLzJkdXN0L3YycmF5Ti9yZWxlYXNlcy9sYXRlc3Q))
 
-  ![支持hy2版的V2rayN下载](D:\booknotes\云服务器之科学上网\file\支持hy2版的V2rayN下载.png)
+  ![支持hy2版的V2rayN下载](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/%E6%94%AF%E6%8C%81hy2%E7%89%88%E7%9A%84V2rayN%E4%B8%8B%E8%BD%BD.png)
 
 - [hy2下载]([https://github.com/apernet/hysteria/releases](https://bulianglin.com/g/aHR0cHM6Ly9naXRodWIuY29tL2FwZXJuZXQvaHlzdGVyaWEvcmVsZWFzZXM))
 
   注意不要下错版本，darwin是macos，freebsd是类uniux，arm是不同x86的一种芯片
 
-  ![hy2下载](D:\booknotes\云服务器之科学上网\file\hy2下载.png)
+  ![hy2下载](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/hy2%E4%B8%8B%E8%BD%BD.png)
 
    - hy2客户端文件替换，hysteria和hysteria2两个文件夹都替换
 
-     ![hy2客户端文件替换](D:\booknotes\云服务器之科学上网\file\hy2客户端文件替换.png)
+     ![hy2客户端文件替换](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/hy2%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%87%E4%BB%B6%E6%9B%BF%E6%8D%A2.png)
 
 - 客户端配置文件
 
@@ -187,6 +187,72 @@
 
      服务端可以通过以上配置禁用
 
+---
+
+另一种脚本（亲测有效），使用相对简单，但是默认使用bbr拥赛控制算法，暂未发现速率配置方法。
+
+## 教程说明
+
+   - [文本教程](https://github.com/GaloisLYJ/Hysteria2)
+
+   - [视频教程](https://www.youtube.com/watch?v=fWn0UCBRqOg&t=524s)
+
+   - 环境说明
+
+     1、基于Ubuntu22.04
+
+     2、先查看防火墙状态并关闭
+
+     ```bash
+     ufw status
+     ufw disable
+     ```
+
+​       3、在亿速云后台服务器管理，防火墙-放行所有端口
+
+## 服务端
+
+- 更新环境
+
+  ```bash
+  apt update -y
+  apt install curl sudo -y
+  ```
+
+- Hysteria2一键安装脚本
+
+  ```bash
+  wget -N --no-check-certificate https://raw.githubusercontent.com/flame1ce/hysteria2-install/main/hysteria2-install-main/hy2/hysteria.sh && bash hysteria.sh
+  ```
+
+  依次使用自签证书，随机端口，密码：yujian，sni伪装：www.bing.com，其他都默认
+
+- 设置常启动，显示active，server up即为启动成功
+
+  ```bash
+  systemctl start hysteria-server.service    # 启动 hysteria 服务
+  systemctl enable hysteria-server.service   # 设置 hysteria 服务 开机自启
+  systemctl restart hysteria-server.service  # 重启 hysteria 服务
+  systemctl stop hysteria-server.service     # 停止 hysteria 服务
+  systemctl status hysteria-server.service   # 查看 hysteria 服务 状态
+  journalctl -u hysteria-server.service			 # 查看日志
+  ```
+
+- 使用winscp的scp协议连接156.236.75.59下载配置文件
+
+  ```bash
+  /root/hy/hy-client.json
+  /root/hy/url.txt
+  
+  hysteria2://yujian@156.236.75.59:62766/?insecure=1&sni=www.bing.com#Hysteria2-misaka
+  ```
+
+## 客户端
+
+- [v2rayN下载](https://github.com/2dust/v2rayN/releases/latest) v6.60 zz_v2rayN-With-Core-SelfContained 这个版本可以直接粘贴上述订阅链接
+- 右击设置为活动服务器，下方系统代理设置为：自动配置系统代理，最后上方重启服务，wifi不要连接软路由
+
 ## google连接测试
 
 <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/google%E8%BF%9E%E6%8E%A5%E6%B5%8B%E8%AF%95.png" alt="google" style="zoom:50%;" />
+
