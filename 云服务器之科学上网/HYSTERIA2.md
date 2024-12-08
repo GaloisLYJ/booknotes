@@ -171,7 +171,7 @@
 
   将上述代码复制到一个txt文件中作为hy2节点配置文件。之后打开v2rayN，添加自定义配置服务器。浏览选择该txt文件，类型改为all后可选。socks端口填写客户端配置里面socks5后面的端口。
 
-  ![hy2的v2rayN客户端配置](D:\booknotes\云服务器之科学上网\file\hy2的V2rayN客户端配置.png)
+  ![hy2的v2rayN客户端配置](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/hy2%E7%9A%84V2rayN%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE.png)
 
   将该节点设置为活动服务器，下方设置为“自动配置系统代理”。
 
