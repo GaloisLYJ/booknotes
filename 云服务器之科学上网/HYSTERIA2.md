@@ -288,7 +288,7 @@
 
   ​       带宽取决于多方面限制，首先裸奔时连接speedtest.cn就是速度上限。然后连接海外用speedtest.net测试，海外服务器的带宽上限亿速云是10M，vultr是1G(1000M)，所以国内服务器带宽巨贵。一般来说50M，就足够youtube4k流畅观看。
 
-  ![亿速云带宽](D:\booknotes\云服务器之科学上网\file\亿速云带宽.png)
+  ![亿速云带宽](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/%E4%BA%BF%E9%80%9F%E4%BA%91%E5%B8%A6%E5%AE%BD.png)
 
 ## google连接测试
 
