@@ -294,3 +294,12 @@
 
 <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/google%E8%BF%9E%E6%8E%A5%E6%B5%8B%E8%AF%95.png" alt="google" style="zoom:50%;" />
 
+## 全场景使用
+
+1、开启tun模式，自动配置系统代理，路由全局，可以畅联电脑所有软件使用。
+
+2、关闭tun模式，自动配置系统代理，路由全局，可以解禁网页如印象笔记、qq邮箱。
+
+![hy2的全场景使用](D:\booknotes\云服务器之科学上网\file\hy2的全场景使用.png)
+
+以上一个是订阅链接黏贴方式导入，一个是服务器导入配置文件。注意版本要求：v6.60。
