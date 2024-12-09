@@ -189,7 +189,7 @@
 
 ---
 
-另一种脚本（亲测有效），使用相对简单，但是默认使用bbr拥赛控制算法，暂未发现速率配置方法。
+另一种脚本（亲测有效），使用相对简单，但是默认使用bbr拥赛控制算法。
 
 ## 教程说明
 
@@ -243,14 +243,52 @@
   ```bash
   /root/hy/hy-client.json
   /root/hy/url.txt
-  
+  /root/hy/hy-client.yaml
   hysteria2://yujian@156.236.75.59:62766/?insecure=1&sni=www.bing.com#Hysteria2-misaka
   ```
 
 ## 客户端
 
 - [v2rayN下载](https://github.com/2dust/v2rayN/releases/latest) v6.60 zz_v2rayN-With-Core-SelfContained 这个版本可以直接粘贴上述订阅链接
+
 - 右击设置为活动服务器，下方系统代理设置为：自动配置系统代理，最后上方重启服务，wifi不要连接软路由
+
+- 也可以通过配置文件使用(可以定义带宽)
+
+  ```bash
+  server: 156.236.75.59:62766
+  
+  auth: yujian
+  
+  tls:
+    sni: www.bing.com
+    insecure: true
+  
+  quic:
+    initStreamReceiveWindow: 16777216
+    maxStreamReceiveWindow: 16777216
+    initConnReceiveWindow: 33554432
+    maxConnReceiveWindow: 33554432
+  
+  bandwidth:
+    up: 120 mbps
+    down: 100 mbps
+  
+  fastOpen: true
+  
+  socks5:
+    listen: 127.0.0.1:5678 #注意这里的scoks5端口，v2界面填的时候socks5端口填这个
+  http:
+    listen: 127.0.0.1:8080
+  
+  transport:
+    udp:
+      hopInterval: 30s
+  ```
+
+  ​       带宽取决于多方面限制，首先裸奔时连接speedtest.cn就是速度上限。然后连接海外用speedtest.net测试，海外服务器的带宽上限亿速云是10M，vultr是1G(1000M)，所以国内服务器带宽巨贵。一般来说50M，就足够youtube4k流畅观看。
+
+  ![亿速云带宽](D:\booknotes\云服务器之科学上网\file\亿速云带宽.png)
 
 ## google连接测试
 
