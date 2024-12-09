@@ -296,10 +296,10 @@
 
 ## 全场景使用
 
-1、开启tun模式，自动配置系统代理，路由全局，可以畅联电脑所有软件使用。
+1、开启tun模式，自动配置系统代理，路由全局，可以畅联电脑所有软件使用(如gitbash)。此时部分网站如github不支持使用，关闭tun即可。
 
 2、关闭tun模式，自动配置系统代理，路由全局，可以解禁网页如印象笔记、qq邮箱。
 
-![hy2的全场景使用](D:\booknotes\云服务器之科学上网\file\hy2的全场景使用.png)
+![hy2的全场景使用](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/hy2%E7%9A%84%E5%85%A8%E5%9C%BA%E6%99%AF%E4%BD%BF%E7%94%A8.png)
 
 以上一个是订阅链接黏贴方式导入，一个是服务器导入配置文件。注意版本要求：v6.60。
