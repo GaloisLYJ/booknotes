@@ -41,10 +41,16 @@
 ## SSH连接工具
 
 - [XSHELL](https://www.xshell.com/zh/free-for-home-school/)
+
 - [MobaXterm](https://mobaxterm.mobatek.net/)
+
 - [FinalShell](https://www.hostbuf.com/t/988.html)
+
 - [SecureCrt](https://www.vandyke.com/products/securecrt/)
+
 - FinalShell连接到156.236.75.59跳板机，再ssh root@[s14.serv00.com](http://s14.serv00.com/) 命令
+
+  如果登录时候ip被锁，可以尝试[ip解锁](https://www.serv00.com/ip_unban/)
 
 ## 教程说明
 
