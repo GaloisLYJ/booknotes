@@ -8,7 +8,7 @@
 
 - 账号注册
 
-  ![账号注册](D:\booknotes\云服务器之科学上网\file\Serv00注册.png)
+  ![账号注册](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00%E6%B3%A8%E5%86%8C.png)
 
   注册要点：
   1、使用代理的节点访问网站进行注册，多更换尝试，这里使用的是v2rayN，5.6top订阅中的台湾节点注册成功
@@ -16,7 +16,7 @@
 
 - 注册成功自动收到服务器信息邮件
 
-  ![服务器邮件](D:\booknotes\云服务器之科学上网\file\Serv00服务器邮件.png)
+  ![服务器邮件](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%82%AE%E4%BB%B6.png)
 
 - 操作系统：FreeBSD
 
@@ -28,11 +28,11 @@
 
   - 启用允许安装自定义软件
 
-    ![Serv00启用软件安装](D:\booknotes\云服务器之科学上网\file\Serv00启用软件安装.png)
+    ![Serv00启用软件安装](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00%E5%90%AF%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.png)
 
   - 通过random随机放开三个端口访问
 
-    ![Serv00端口访问](D:\booknotes\云服务器之科学上网\file\Serv00端口访问.png)
+    ![Serv00端口访问](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00%E7%AB%AF%E5%8F%A3%E8%AE%BF%E9%97%AE.png)
 
 ## SSH连接工具
 
@@ -59,7 +59,7 @@
   bash <(curl -Ls https://raw.githubusercontent.com/eooce/sing-box/test/sb_00.sh)
   ```
   
-  ![Sing-box安装](D:\booknotes\云服务器之科学上网\file\Serv00的Sing-box安装.png)
+  ![Sing-box安装](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00%E7%9A%84Sing-box%E5%AE%89%E8%A3%85.png)
   
 不按照探针，其他依次输入即可获得节点链接三个。
   
@@ -102,12 +102,14 @@
 
 <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/google%E8%BF%9E%E6%8E%A5%E6%B5%8B%E8%AF%95.png" alt="google" style="zoom:50%;" />
 
+延迟经测268ms均非常不错了
+
 ## 全场景使用
 
 1、开启tun模式，自动配置系统代理，路由全局，可以畅联电脑所有软件使用(如gitbash)。此时部分网站如github不支持使用，关闭tun即可。
 
-2、关闭tun模式，自动配置系统代理，路由全局，可以解禁网页如github。
+2、关闭tun模式，自动配置系统代理，路由全局，可以解禁网页如github。印象笔记、qq邮箱因其自身检测的问题暂未通过。
 
-![全场景使用](D:\booknotes\云服务器之科学上网\file\Serv00的V2rayN全场景.png)
+![全场景使用](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00%E7%9A%84V2rayN%E5%85%A8%E5%9C%BA%E6%99%AF.png)
 
 注意版本要求：v6.60。
