@@ -1,4 +1,4 @@
-# Serv00，Sing-box
+# 永久免费服务器Serv00，Sing-box代理节点搭建
 
 ---
 
@@ -6,13 +6,15 @@
 
 - [Serv00](https://www.serv00.com/)
 
+  3G存储，512mb内存，无限流量，十年起步免费
+
 - 账号注册
 
   ![账号注册](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00%E6%B3%A8%E5%86%8C.png)
 
   注册要点：
   1、使用代理的节点访问网站进行注册，多更换尝试，这里使用的是v2rayN，5.6top订阅中的台湾节点注册成功
-  2、使用gmail、outlook等大型邮箱，临时的也行，protonmail等待验证
+  2、使用gmail、outlook等大型邮箱，临时的也行(自行谷歌)，protonmail等待验证
 
 - 注册成功自动收到服务器信息邮件
 
@@ -112,4 +114,4 @@
 
 ![全场景使用](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00%E7%9A%84V2rayN%E5%85%A8%E5%9C%BA%E6%99%AF.png)
 
-注意版本要求：v6.60。
+注意这里的版本：v6.60。
