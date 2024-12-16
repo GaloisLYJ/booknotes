@@ -8,6 +8,8 @@
 
   3G存储，512mb内存，无限流量，十年起步免费
 
+  请至少3个月内进行一次ssh或web登录，或者用脚本，否则会被删号
+
 - 账号注册
 
   ![账号注册](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00%E6%B3%A8%E5%86%8C.png)
