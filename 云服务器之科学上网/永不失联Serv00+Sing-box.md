@@ -116,4 +116,4 @@
 
 注意这里的版本：v6.60。
 
-<img src="D:\booknotes\云服务器之科学上网\file\Serv00的git.png" alt="serv00的git亲测可用" style="zoom:60%;" />
+<img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00%E7%9A%84git.png" alt="serv00的git亲测可用" style="zoom:60%;" />
