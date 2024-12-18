@@ -70,7 +70,7 @@
 
   取消勾选：智能加速、Exec Channel
 
-  ![本地socks5](D:\booknotes\云服务器之科学上网\file\FinalShell本地Socks5配置用于连接Serv00.png)
+  <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/FinalShell%E6%9C%AC%E5%9C%B0Socks5%E9%85%8D%E7%BD%AE%E7%94%A8%E4%BA%8E%E8%BF%9E%E6%8E%A5Serv00.png" alt="本地socks5" style="zoom:50%;" />
 
 - [SecureCrt](https://www.vandyke.com/products/securecrt/)
 
