@@ -14,9 +14,15 @@
 
   ![账号注册](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00%E6%B3%A8%E5%86%8C.png)
 
-  注册要点：
-  1、使用代理的节点访问网站进行注册，多更换尝试，这里使用的是v2rayN，5.6top订阅中的台湾节点注册成功
-  2、使用gmail、outlook等大型邮箱，临时的暂未尝试成功(自行谷歌)，protonmail等待验证
+  注册要点：使用纯净的住宅IP
+  1、使用代理的节点访问网站进行注册，多更换尝试，这里使用的是v2rayN，5.6top订阅中的台湾全解锁节点注册成功
+  2、使用gmail、outlook等大型邮箱，临时的暂未尝试成功(自行谷歌)，protonmail等待验证，outlook可无限注册
+
+  3、使用的代理需要先进行ipinfo.io检测，找asn type="isp"的，而不是"hosting"的，hosting是托管代理的意思
+
+  4、也需要搜索查询IP欺诈值，不能太高的
+
+  5、同一个IP注册成功过的，再次注册目前没有成功过
 
 - 注册成功自动收到服务器信息邮件
 
@@ -42,6 +48,8 @@
 
  - galoisliuyujian@gmail.com
 
+   galoisliuyujian
+
    ```
    Login:	galoisliuyujian
    Password:	V9pUpkho)w&j6Qd1%r5U
@@ -52,6 +60,8 @@
 
  - galoisliuyujian@outlook.com
 
+   lyj3354130
+   
    ```
    Login:	LIUYJ00
    Password:	%3(^8*Bz^f7mDx^%s&9@
@@ -59,6 +69,63 @@
    Home directory:	/usr/home/LIUYJ00
    DevilWEB webpanel: https://panel15.serv00.com/
    ```
+   
+- walldocker0001@outlook.com
+
+  thepassword0001
+
+  ```
+  Login:	thepassword0001
+  Password:	9HjyJxT01^wP5RK9lgbq
+SSH/SFTP server address:	s15.serv00.com
+  Home directory:	/usr/home/thepassword0001
+  DevilWEB webpanel: https://panel15.serv00.com/
+  ```
+  
+
+## 其他信息
+
+以 walldocker0001@outlook.com 为例
+
+```
+E-mail:
+
+SMTP address:	mail15.serv00.com (ports: 25, 465 and 587)
+IMAP address:	mail15.serv00.com (ports: 143 and 993)
+POP3 address:	mail15.serv00.com (ports: 110 and 995)
+Webmail:	https://mail.serv00.com/
+Databases:
+
+MySQL server:	mysql15.serv00.com
+PhpMyAdmin (MySQL web management):	https://pma.serv00.com/
+PostgreSQL server:	pgsql15.serv00.com
+PhpPgAdmin (PostgreSQL web management):	https://pga.serv00.com/
+MongoDB server:	mongo15.serv00.com
+RockMongo (MongoDB web management):	https://moa.serv00.com/
+Databases must first be created in DevilWEB webpanel or in Devil account management system (from shell account).
+
+Domains and subdomains:
+
+The account is created with a free subdomain: https://thepassword0001.serv00.net/.
+In DevilWEB webpanel own domains can be added and our DNS servers can be used. Any subdomains in thepassword0001.serv00.net can be created anytime.
+
+DNS servers:
+
+dns1.serv00.com
+dns2.serv00.com
+
+Help and support:
+
+You can make any changes to your account yourself using our account management system (command: devil) available after logging into SSH and using the DevilWEB webpanel available at https://panel15.serv00.com/.
+
+Before installing your own software please check if it is installed in the system.
+Please send additional software installation suggestions to forum: https://forum.serv00.com
+
+Documentation is available on https://docs.serv00.com/ - check it first.
+Still have questions? Fast free support available on the forum: https://forum.serv00.com
+
+Hope you enjoy using our service!
+```
 
 ## SSH连接工具
 
@@ -77,3 +144,6 @@
 - FinalShell连接到156.236.75.59跳板机，再ssh root@[s14.serv00.com](http://s14.serv00.com/) 命令
 
   如果ssh登录失败，可以尝试[ip解锁](https://www.serv00.com/ip_unban/)
+
+## 自动化批量保号
+
