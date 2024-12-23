@@ -77,7 +77,7 @@
   ```
   Login:	thepassword0001
   Password:	9HjyJxT01^wP5RK9lgbq
-SSH/SFTP server address:	s15.serv00.com
+  SSH/SFTP server address:	s15.serv00.com
   Home directory:	/usr/home/thepassword0001
   DevilWEB webpanel: https://panel15.serv00.com/
   ```
@@ -135,7 +135,7 @@ Hope you enjoy using our service!
 
 - [FinalShell](https://www.hostbuf.com/t/988.html)
 
-  取消勾选：智能加速、Exec Channel
+  取消勾选：智能加速、Exec Channel、需要翻墙访问的时候可以配置这个	
 
   <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/FinalShell%E6%9C%AC%E5%9C%B0Socks5%E9%85%8D%E7%BD%AE%E7%94%A8%E4%BA%8E%E8%BF%9E%E6%8E%A5Serv00.png" alt="本地socks5" style="zoom:50%;" />
 
