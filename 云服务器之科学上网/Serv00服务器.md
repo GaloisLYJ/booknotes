@@ -147,3 +147,6 @@ Hope you enjoy using our service!
 
 ## 自动化批量保号
 
+[文字版教程](https://fastly.blog.cmliussss.com/p/Serv00-Socks5/)
+
+[视频版教程](https://www.youtube.com/watch?v=L6gPyyD3dUw)
