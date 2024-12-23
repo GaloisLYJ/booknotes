@@ -108,6 +108,8 @@
   ```
   
   右击节点，测试服务器真连接延迟。设为活动服务器。
+  
+   [my-serv00-wall.json](D:\booknotes\云服务器之科学上网\file\my-serv00-wall.json) 导入新版支持hy2的v2rayN win版即可。
 
 ## google连接测试
 
