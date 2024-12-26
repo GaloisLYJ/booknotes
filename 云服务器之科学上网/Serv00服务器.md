@@ -147,6 +147,10 @@ Hope you enjoy using our service!
 
 ## 自动化批量保号
 
-[文字版教程](https://fastly.blog.cmliussss.com/p/Serv00-Socks5/)
+[文字版教程](https://github.com/GaloisLYJ/serv00-login)
 
-[视频版教程](https://www.youtube.com/watch?v=L6gPyyD3dUw)
+[视频版教程](https://www.youtube.com/watch?v=QnlzpvDl_mo)
+
+每三天自动跑一次脚本ssh登录进行保活，不难，github有步骤
+
+<img src="D:\booknotes\云服务器之科学上网\file\serv00保号.jpg" alt="serv00保号" style="zoom:20%;" />
