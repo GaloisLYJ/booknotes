@@ -153,4 +153,4 @@ Hope you enjoy using our service!
 
 每三天自动跑一次脚本ssh登录进行保活，不难，github有步骤
 
-<img src="D:\booknotes\云服务器之科学上网\file\serv00保号.jpg" alt="serv00保号" style="zoom:20%;" />
+<img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/serv00%E4%BF%9D%E5%8F%B7.jpg" alt="serv00保号" style="zoom:20%;" />
