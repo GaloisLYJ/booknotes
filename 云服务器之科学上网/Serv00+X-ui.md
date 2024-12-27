@@ -68,7 +68,7 @@
   wget -O x-ui.sh -N --no-check-certificate https://raw.githubusercontent.com/GaloisLYJ/am-serv00-x-ui/refs/heads/main/x-ui.sh && chmod +x x-ui.sh && ./x-ui.sh
   ```
   
-  ![Serv00-Xui](D:\booknotes\云服务器之科学上网\file\Serv00-X-ui.png)
+  ![Serv00-Xui](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00-X-ui.png)
   
   依次输入0安装，面板端口，流量监测端口，和X-ui面板账密：admin。
   
@@ -76,15 +76,15 @@
   
 - 清除serv00原域名php站点设置
 
-  ![serv00删除php站点域名](D:\booknotes\云服务器之科学上网\file\serv00删除php站点域名.png)
+  ![serv00删除php站点域名](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/serv00%E5%88%A0%E9%99%A4php%E7%AB%99%E7%82%B9%E5%9F%9F%E5%90%8D.png)
 
 - 配置代理类型的站点域名
 
-  ![Serv00添加prxoy站点域名](D:\booknotes\云服务器之科学上网\file\Serv00添加prxoy站点域名.png)
+  ![Serv00添加prxoy站点域名](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00%E6%B7%BB%E5%8A%A0prxoy%E7%AB%99%E7%82%B9%E5%9F%9F%E5%90%8D.png)
 
 - 通过站点域名进行访问
 
-  ![Serv00原站点域名X-ui](D:\booknotes\云服务器之科学上网\file\Serv00原站点域名X-ui.png)
+  ![Serv00原站点域名X-ui](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00%E5%8E%9F%E7%AB%99%E7%82%B9%E5%9F%9F%E5%90%8DX-ui.png)
 
 - 节点配置
 
@@ -112,6 +112,6 @@
 
 ## google连接测试
 
-![serv00谷歌连接测试](D:\booknotes\云服务器之科学上网\file\serv00谷歌连接测试.png)
+![serv00谷歌连接测试](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/serv00%E8%B0%B7%E6%AD%8C%E8%BF%9E%E6%8E%A5%E6%B5%8B%E8%AF%95.png)
 
 ChatGpt 也可解锁。
