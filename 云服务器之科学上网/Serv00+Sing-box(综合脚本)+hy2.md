@@ -27,14 +27,14 @@
   bash <(curl -Ls https://raw.githubusercontent.com/GaloisLYJ/serv00-play/refs/heads/main/start.sh)
   ```
   
-  ![Serv00-play安装](D:\booknotes\云服务器之科学上网\file\Serv00-play安装.png)
+  ![Serv00-play安装](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00-play%E5%AE%89%E8%A3%85.png)
   
   ```
   依次是：1、7、8、10
   按步骤输入，serv00开放的端口即可，外部伪装这里选n，则是www.bing.com
   ```
   
-  ![hy2启动](D:\booknotes\云服务器之科学上网\file\Serv00-paly hy2启动.png)
+  ![serv00-play hy2启动](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00-paly%20hy2%E5%90%AF%E5%8A%A8.png)
 
 ## 客户端
 
