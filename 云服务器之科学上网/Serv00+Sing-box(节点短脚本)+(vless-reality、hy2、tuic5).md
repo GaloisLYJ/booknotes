@@ -1,4 +1,4 @@
-# 永久免费服务器Serv00，Sing-box代理节点搭建
+# Serv00，Sing-box代理，vless-reality|hy2|tuic5节点搭建
 
 ---
 
@@ -71,7 +71,7 @@
   
   ![Sing-box安装](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00%E7%9A%84Sing-box%E5%AE%89%E8%A3%85.png)
   
-  不按照探针，其他依次输入即可获得节点链接三个。
+  不安装探针，其他依次输入即可获得节点链接三个。
 
 
 ## 客户端

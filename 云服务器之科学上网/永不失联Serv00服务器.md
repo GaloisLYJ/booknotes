@@ -58,6 +58,8 @@
    DevilWEB webpanel: https://panel14.serv00.com/
    ```
 
+   这台当前用来测试学习机器和脚本，未搭载任何服务。
+
  - galoisliuyujian@outlook.com
 
    lyj3354130
@@ -69,6 +71,8 @@
    Home directory:	/usr/home/LIUYJ00
    DevilWEB webpanel: https://panel15.serv00.com/
    ```
+   
+   这台当前用来搭建X-ui，详见《Serv00+X-ui+(vmess)》
    
 - walldocker0001@outlook.com
 
@@ -82,6 +86,7 @@
   DevilWEB webpanel: https://panel15.serv00.com/
   ```
   
+  这台当前用来搭建X-ui
 
 ## 其他信息
 
