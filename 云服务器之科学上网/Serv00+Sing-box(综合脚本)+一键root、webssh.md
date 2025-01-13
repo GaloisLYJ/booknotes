@@ -56,7 +56,7 @@
   依次输入：3、自定义域名
   ```
 
-  <img src="D:\booknotes\云服务器之科学上网\file\Serv00 webssh.png" alt="serv00 webssh" style="zoom:60%;" />
+  <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/Serv00%20webssh.png" alt="serv00 webssh" style="zoom:60%;" />
   
   https://myssh.us.kg/
-  ![myssh](D:\booknotes\云服务器之科学上网\file\myssh.png)
+  ![myssh](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/myssh.png)

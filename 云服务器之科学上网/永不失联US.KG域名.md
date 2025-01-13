@@ -10,7 +10,7 @@
 
 - 外国人身份获取
 
-  <img src="D:\booknotes\云服务器之科学上网\file\外国人身份获取.png" alt="外国人身份获取" style="zoom:40%;" />
+  <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/%E5%A4%96%E5%9B%BD%E4%BA%BA%E8%BA%AB%E4%BB%BD%E8%8E%B7%E5%8F%96.png" alt="外国人身份获取" style="zoom:40%;" />
 
 - [us.kg](https://dash.domain.digitalplat.org/auth/login) 登录
 
@@ -31,17 +31,17 @@
 
 - 在[CF](https://dash.cloudflare.com/)上添加该domain，选择免费套餐，操作得到界面
 
-  <img src="D:\booknotes\云服务器之科学上网\file\CloudFlare 新增域名.png" alt="CloudFlare 新增域名" style="zoom:60%;" />
+  <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/CloudFlare%20%E6%96%B0%E5%A2%9E%E5%9F%9F%E5%90%8D.png" alt="CloudFlare 新增域名" style="zoom:60%;" />
 
 - 填入name server
 
-  <img src="D:\booknotes\云服务器之科学上网\file\USKG管理后台设置域名解析.png" alt="在us.kg的管理后台填入" style="zoom:60%;" />
+  <img src="https://github.com/GaloisLYJ/booknotes/blob/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/USKG%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90.png?raw=true" alt="在us.kg的管理后台填入" style="zoom:60%;" />
 
   先点注册，再点CF的Continue
 
 - CF上添加域名的IP解析设置
 
-  ![CloudFlare 域名解析到IP](D:\booknotes\云服务器之科学上网\file\CloudFlare 域名解析到IP.png)
+  ![CloudFlare 域名解析到IP](https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/CloudFlare%20%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E5%88%B0IP.png)
 
   等待片刻，状态变为Active即可。
 
@@ -49,7 +49,7 @@
 
 - 续活
 
-  <img src="D:\booknotes\云服务器之科学上网\file\US.KG续活.png" alt="US.KG续活" style="zoom:60%;" />
+  <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/US.KG%E7%BB%AD%E6%B4%BB.png" alt="US.KG续活" style="zoom:60%;" />
 
   临期180天内，需要进行续活操作，否则会过期。
 
