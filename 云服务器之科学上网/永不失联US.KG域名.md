@@ -8,7 +8,7 @@
 
   每个号可以注册三个域名
 
-- 外国人身份获取
+- [外国人身份获取](https://www.shenfendaquan.com/)
 
   <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/%E5%A4%96%E5%9B%BD%E4%BA%BA%E8%BA%AB%E4%BB%BD%E8%8E%B7%E5%8F%96.png" alt="外国人身份获取" style="zoom:40%;" />
 
@@ -23,9 +23,44 @@
   legal full name:Gladys P James
   email:sio13lag@protonmail.com
   phone:+1-4433184481
-  fuu address:4250 Five Points,Bel Air,Maryland
+  full address:4250 Five Points,Bel Air,Maryland
   password:lYj3354130
   ```
+
+  ```
+  username:thedocker
+  legal full name:Kenneth G Hass
+  email:galoisliuyujian@gmail.com
+  phone:+1-8587790443
+  full address:3909 Hood Avenue,San Diego,California
+  password:3354130lYj
+  ```
+
+- KYC验证(当前20250114网站提示KYC服务暂不可用，过几天再试)
+
+  - 邮件
+
+    点击邮件中的链接，跳转到注册成功界面，把url后缀auth及后面都去掉，改为login进行登录可进入KYC验证
+
+  - 身份证
+
+    把上述身份信息段放在白txt记事本中，进行截图，Upload KYC Documents to Default Server(Recommended)，
+
+    点击 Click me to redirect KYC Page继续
+
+  - 原因
+
+    填写 setup a website
+
+  - 证明类型
+
+    work ID
+
+  - 上传证明文件
+
+    第一行上传刚才的身份截图txt，提交
+
+  - 使用[URL登录](https://regeister.us.kg/)
 
 - 创建域名 Domain Registion，Check检查你要的前缀是否已经存在
 
