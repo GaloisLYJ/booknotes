@@ -87,6 +87,18 @@
   ```
   
   这台当前用来搭建X-ui
+  
+- yujian_galois@foxmail.com QQ邮箱
+
+  lyj13.
+
+  ```
+  Login:	galoisyujian
+  Password:	dw!o#!pq@00&!CX!i5e$
+  SSH/SFTP server address:	s16.serv00.com
+  Home directory:	/usr/home/galoisyujian
+  DevilWEB webpanel: https://panel16.serv00.com/
+  ```
 
 ## 其他信息
 
