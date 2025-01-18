@@ -58,7 +58,7 @@
    DevilWEB webpanel: https://panel14.serv00.com/
    ```
 
-   这台当前用来测试学习机器和脚本，未搭载任何服务。
+   这台当前用来搭建webssh，详见《Serv00+Sing-box(综合脚本)》。
 
  - galoisliuyujian@outlook.com
 
@@ -86,7 +86,7 @@
   DevilWEB webpanel: https://panel15.serv00.com/
   ```
   
-  这台当前用来搭建X-ui
+  这台当前用来一键root，hy2节点
   
 - yujian_galois@foxmail.com QQ邮箱
 
@@ -99,6 +99,8 @@
   Home directory:	/usr/home/galoisyujian
   DevilWEB webpanel: https://panel16.serv00.com/
   ```
+  
+  这台当前用来测试学习机器和脚本，未搭载任何服务。
 
 ## 其他信息
 
