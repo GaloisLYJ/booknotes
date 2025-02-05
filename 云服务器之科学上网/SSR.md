@@ -52,6 +52,15 @@
 
   <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/SSR%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE.png" style="zoom:60%;" />
 
+ - 高工的服务器
+
+   ```
+   156.232.13.97
+   root
+   Dcf476825
+   高工 SSR ssr://MTU2LjIzMi4xMy45Nzo4MDphdXRoX2NoYWluX2E6bm9uZTpwbGFpbjplR2xoYm1ka2IyNW4
+   ```
+
 ## 客户端
 
 - 小飞机下载
@@ -72,3 +81,28 @@
   ## google连接测试
 
   <img src="https://raw.githubusercontent.com/GaloisLYJ/booknotes/refs/heads/master/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/file/google%E8%BF%9E%E6%8E%A5%E6%B5%8B%E8%AF%95.png" alt="google" style="zoom:50%;" />
+
+ - 我的谷歌账号
+
+   ```
+   宇健 刘
+   wowliuyujian@gmail.com
+   lyj3354130+
+   辅助电话：17722799521
+   辅助邮箱：yujian_galois@qq.com
+   
+   YUJIAN LIU
+   wowliuyujian@gmail.com
+   lyj3354130+
+   辅助电话：17722799521
+   辅助邮箱：yujian_galois@qq.com
+   
+   RICI LIU
+   riciliuyujian@gmail.com
+   lyj3354130+
+   辅助电话：18169987543
+   辅助邮箱：yujian_galois@qq.com
+   ```
+
+   
+
