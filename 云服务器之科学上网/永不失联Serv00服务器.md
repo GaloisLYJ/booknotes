@@ -86,7 +86,7 @@
   DevilWEB webpanel: https://panel15.serv00.com/
   ```
   
-  这台当前用来一键root，hy2节点
+  这台当前用来hy2
   
 - yujian_galois@foxmail.com QQ邮箱
 
