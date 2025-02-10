@@ -86,7 +86,7 @@
   DevilWEB webpanel: https://panel15.serv00.com/
   ```
   
-  这台当前用来hy2
+  这台当前用来hy2，工作win用v2rayN开tun，自动配置系统代理，路由全局可破所有应用
   
 - yujian_galois@foxmail.com QQ邮箱
 
