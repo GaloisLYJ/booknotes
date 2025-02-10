@@ -72,7 +72,7 @@
    DevilWEB webpanel: https://panel15.serv00.com/
    ```
    
-   这台当前用来搭建X-ui，详见《Serv00+X-ui+(vmess)》
+   这台当前用来搭建X-ui备用节点，详见《Serv00+X-ui+(vmess)》
    
 - walldocker0001@outlook.com
 
@@ -86,7 +86,7 @@
   DevilWEB webpanel: https://panel15.serv00.com/
   ```
   
-  这台当前用来hy2，工作win用v2rayN开tun，自动配置系统代理，路由全局可破所有应用
+  这台当前用来搭建稳定hy2节点，工作win用v2rayN开路由全局可破deepseek，开热点+tun可破github
   
 - yujian_galois@foxmail.com QQ邮箱
 
