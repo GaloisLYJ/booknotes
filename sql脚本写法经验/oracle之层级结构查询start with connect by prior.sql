@@ -10,6 +10,73 @@ SELECT MIX_ORGID, ORGCODE, ORGNAME, ORGSHORTNAME, MIX_ORG_TREEID, COSTCENTERID, 
        EMP_GD, A25_B001010, A25_B001005, A25_B001255, EMP_BZ, A2_B001010, A2_B001005, A2_B001255,
        EMP_LA, A1_B001010, A1_B001005, A1_B001255 FROM V_B001_ALL;
 
+-- Deepseek:    请教会我oracle的START WITH CONNECT BY PRIOR
+
+
+/*
+  START WITH指定层次结构的起点，也就是根节点，
+  而CONNECT BY PRIOR定义父行和子行之间的关系。
+  这里可能需要强调PRIOR的位置，它决定了遍历的方向，是自上而下还是自下而上。
+*/
+
+
+SELECT 
+    column1, column2, ...,
+    LEVEL, -- 层级深度（根为1，子节点递增）
+    SYS_CONNECT_BY_PATH(column, '/') AS path -- 从根到当前节点的路径
+FROM 
+    table_name
+START WITH 
+    condition1 -- 指定根节点（起始条件）
+CONNECT BY [NOCYCLE] 
+    PRIOR parent_column = child_column -- 定义父子关系（方向由 PRIOR 位置决定）
+[ORDER SIBLINGS BY column]; -- 按兄弟节点排序
+
+
+
+--自上而下查询所有信息中心的机构
+select ID,--记录ID
+       B001005,--父级ID
+       B001002,--简称
+       B001715,--排序码
+       level,--所属层级
+       sys_connect_by_path(B001005,'/') as path --完整路径
+from B001
+where B001730 = '00900' -- 逻辑删除
+start with B001010 = '10019951' -- 层级查询的根节点为信息中心，起始条件
+connect by prior id = B001002 -- prior先前的，先前的子作为父节点，即下钻
+order siblings by B001715;-- siblings 按兄弟节点排序 --排序依据 B001715
+/*
+8C79847D6FA724EFE053C906090ACCDD,信息中心,8C79847D72FD24EFE053C906090ACCDD,999999,1,/信息中心
+8C79847D74A924EFE053C906090ACCDD,信息安全部,8C79847D6FA724EFE053C906090ACCDD,0,2,/信息中心/信息安全部
+8a8971b982202a880182237b3abf2711,信息安全技术科,8C79847D74A924EFE053C906090ACCDD,0,3,/信息中心/信息安全部/信息安全技术科
+8a8971b98227fa470182352ac4192bea,西安组,8a8971b982202a880182237b3abf2711,999999,4,/信息中心/信息安全部/信息安全技术科/西安组
+*/
+
+
+--自下而上查询所有信息中心的父机构
+select ID,--记录ID
+       B001005,--父级ID
+       B001002,--简称
+       B001715,--排序码
+       level,--所属层级
+       sys_connect_by_path(B001005,'/') as path --完整路径
+from B001
+where B001730 = '00900' -- 逻辑删除
+start with B001010 = '10019951' -- 层级查询的根节点为信息中心，起始条件
+connect by id = prior B001002 -- prior先前的，先前的父作为子节点，即上探
+order siblings by B001715;
+/*
+8C79847D6FA724EFE053C906090ACCDD,信息中心,8C79847D72FD24EFE053C906090ACCDD,999999,1,/信息中心
+8C79847D72FD24EFE053C906090ACCDD,公司级职能单位,101,001008,2,/信息中心/公司级职能单位
+101,比亚迪,-1,999999,3,/信息中心/公司级职能单位/比亚迪
+*/
+
+
+
+
+
+-- 综合使用案例，放在子查询里面扩展列，B001是每条机构层级记录的明细
 create view V_B001_ALL as
 SELECT A.ID MIX_ORGID
 ,A.B001010 ORGCODE
@@ -68,7 +135,6 @@ B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) A3_B001010
 B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) A3_B001005
 ,(SELECT B001255 FROM B001 B WHERE B.B001050 = '0895400307' AND ROWNUM =1 START WITH
 B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) A3_B001255
---��������20250210 start
 ,(SELECT ID FROM B001 B WHERE B.B001050 = '0895438055' AND ROWNUM =1 START WITH
 B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) EMP_GD
 ,(SELECT B001010 FROM B001 B WHERE B.B001050 = '0895438055' AND ROWNUM =1 START WITH
@@ -77,7 +143,6 @@ B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) A25_B001010
 B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) A25_B001005
 ,(SELECT B001255 FROM B001 B WHERE B.B001050 = '0895438055' AND ROWNUM =1 START WITH
 B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) A25_B001255
---��������20250210 end
 ,(SELECT ID FROM B001 B WHERE B.B001050 = '0895400306' AND ROWNUM =1 START WITH
 B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) EMP_BZ
 ,(SELECT B001010 FROM B001 B WHERE B.B001050 = '0895400306' AND ROWNUM =1 START WITH
