@@ -42,9 +42,9 @@ select ID,--记录ID
        level,--所属层级
        sys_connect_by_path(B001005,'/') as path --完整路径
 from B001
-where B001730 = '00900' -- 逻辑删除
+where B001730 = '00900' -- 逻辑删除筛选
 start with B001010 = '10019951' -- 层级查询的根节点为信息中心，起始条件
-connect by prior id = B001002 -- prior先前的，先前的子作为父节点，即下钻
+connect by NOCYCLE prior id = B001002 -- prior先前的，先前的子作为父节点，即下钻，简记：prior所在的字段就是方向，当存在A——B——A循环的时候，需要加上NOCYCLE
 order siblings by B001715;-- siblings 按兄弟节点排序 --排序依据 B001715
 /*
 8C79847D6FA724EFE053C906090ACCDD,信息中心,8C79847D72FD24EFE053C906090ACCDD,999999,1,/信息中心
@@ -62,9 +62,9 @@ select ID,--记录ID
        level,--所属层级
        sys_connect_by_path(B001005,'/') as path --完整路径
 from B001
-where B001730 = '00900' -- 逻辑删除
+where B001730 = '00900' -- 逻辑删除筛选
 start with B001010 = '10019951' -- 层级查询的根节点为信息中心，起始条件
-connect by id = prior B001002 -- prior先前的，先前的父作为子节点，即上探
+connect by NOCYCLE id = prior B001002 -- prior先前的，先前的父作为子节点，即上探，简记：prior所在的字段就是方向，当存在A——B——A循环的时候，需要加上NOCYCLE
 order siblings by B001715;
 /*
 8C79847D6FA724EFE053C906090ACCDD,信息中心,8C79847D72FD24EFE053C906090ACCDD,999999,1,/信息中心
@@ -92,7 +92,7 @@ B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) EMP_CYQ
 ,(SELECT B001010 FROM B001 B WHERE B.B001050 = '089520' AND ROWNUM =1 START WITH
 B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) B001010
 ,(SELECT B001005 FROM B001 B WHERE B.B001050 = '089520' AND ROWNUM =1 START WITH
-B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID )B001005
+B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) B001005
 ,(SELECT B001255 FROM B001 B WHERE B.B001050 = '089520' AND ROWNUM =1 START WITH
 B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) B001255
 ,(SELECT ID FROM B001 B WHERE B.B001050 = '0895402210' AND ROWNUM =1 START WITH
