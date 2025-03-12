@@ -1,11 +1,11 @@
 
---coalesce ÅĞ¿Õ
+--coalesce åˆ¤ç©º
 select coalesce(null,0) as collect_result from dual;
 
 --select to_char(add_months(sysdate, -1), 'YYYY-MM') from dual;
 select to_char(add_months(current_date, -1), 'YYYY-MM') from dual;
 
---ÇĞ»»Ä£Ê½schema
+--åˆ‡æ¢æ¨¡å¼schema
 SET search_path TO ehr_sync;
 
 --
@@ -24,13 +24,13 @@ select count(1) from ehr_sync.bak_a001_history where set_date = '2024-01';
 select * from pg_job;
 select * from pg_job_proc;
 
---job¶¨Ê±ÈÎÎñ
+--jobå®šæ—¶ä»»åŠ¡
 select CURRENT_TIMESTAMP;
 select CURRENT_DATE;
 select dbms_job.submit((select max(job_id)+1 from pg_job),'REFRESH MATERIALIZED VIEW ehr_sync.mv_cq_rate_day_tj',TRUNC(CURRENT_DATE + 1) + (1*60+5)/(24*60),'''1minute''::interval');
 select dbms_job.run(1019);
 select dbms_job.remove(1019);
-select TRUNC(CURRENT_DATE) + (1*60+5)/(24*60) from dual;--ÓÃÕâ¸öµÄÊ±ºòdbms_job¶¨µÄÊÇµ±Ç°Ê±¼ä£¬Ææ¹Ö
+select TRUNC(CURRENT_DATE) + (1*60+5)/(24*60) from dual;--ç”¨è¿™ä¸ªçš„æ—¶å€™dbms_jobå®šçš„æ˜¯å½“å‰æ—¶é—´ï¼Œå¥‡æ€ª
 select TRUNC(CURRENT_DATE + 1) + (1*60+5)/(24*60) from dual;
 select dbms_job.submit((select max(job_id)+1 from pg_job),'select backup() from dual',TRUNC(CURRENT_DATE+2) + (23*60+5)/(24*60),'''7day''::interval');
 SET search_path TO ehr_bak;
@@ -41,14 +41,14 @@ select backup_table('rpt_emp_cq_rate_tj_rate','rpt_emp_cq_rate_tj_rate','ehr_rpt
 select trim('') from dual;
 select schema_name from information_schema.schemata;
 
---Ô¤±àÒëÓï¾ä£¬¶¯Ì¬´«²Îµ÷ÓÃ
+--é¢„ç¼–è¯‘è¯­å¥ï¼ŒåŠ¨æ€ä¼ å‚è°ƒç”¨
 prepare bak_schema_sql(text) as select backup_all_tables_in_schema($1,$2) from dual;
 execute bak_schema_sql('ehr_rpt','');
 deallocate bak_schema_sql;
 
---job¶¨Ê±ÈÎÎñÖ´ĞĞÇé¿ö
+--jobå®šæ—¶ä»»åŠ¡æ‰§è¡Œæƒ…å†µ
 select * from pg_job where job_id in ('1019');
---¸ù¾İÄ£Ê½ºÍÖ´ĞĞµÄsqlÓï¾ä²éÑ¯job¶¨Ê±ÈÎÎñÖ´ĞĞÇé¿ö
+--æ ¹æ®æ¨¡å¼å’Œæ‰§è¡Œçš„sqlè¯­å¥æŸ¥è¯¢jobå®šæ—¶ä»»åŠ¡æ‰§è¡Œæƒ…å†µ
 select * from pg_job where job_id in (
     select distinct job_id from pg_job_proc g
     where 1=1
@@ -57,28 +57,28 @@ select * from pg_job where job_id in (
     and exists(select 1 from pg_job p where p.job_id = g.job_id and p.nspname in ('ehr_rpt'))
 );
 select * from pg_job_proc where job_id in (1025,1026,1030,1031,1032,1033);
---¸ù¾İÄ£Ê½²éÑ¯job¶¨Ê±ÈÎÎñÖ´ĞĞÇé¿ö
+--æ ¹æ®æ¨¡å¼æŸ¥è¯¢jobå®šæ—¶ä»»åŠ¡æ‰§è¡Œæƒ…å†µ
 select * from pg_job_proc where job_id in (select distinct pg_job.job_id from pg_job where nspname in ('ehr_bak'));
---interval ÊÇÊı¾İÀàĞÍ£¬Ê±¼ä¶Î
+--interval æ˜¯æ•°æ®ç±»å‹ï¼Œæ—¶é—´æ®µ
 
 --vastbase
---Í£Ö¹¶¨Ê±ÈÎÎñ
+--åœæ­¢å®šæ—¶ä»»åŠ¡
 select dbms_job.broken(1,true);
---ĞŞ¸Ä¶¨Ê±ÈÎÎñ 10²¹¶¡°æ±¾ºÍ13°æ±¾Ö§³Ö
+--ä¿®æ”¹å®šæ—¶ä»»åŠ¡ 10è¡¥ä¸ç‰ˆæœ¬å’Œ13ç‰ˆæœ¬æ”¯æŒ
 --select dbms_job.change(1,true);
 --vastbase
 
---ÈÃjobÁ¢¼´Ö´ĞĞ£¬ÊÖ¹¤µ÷ÓÃµÄÁ¢¼´Ö´ĞĞ²»»á¸üĞÂpg_jobµÄÊ±¼äĞÅÏ¢
+--è®©jobç«‹å³æ‰§è¡Œï¼Œæ‰‹å·¥è°ƒç”¨çš„ç«‹å³æ‰§è¡Œä¸ä¼šæ›´æ–°pg_jobçš„æ—¶é—´ä¿¡æ¯
 select dbms_job.run(1020) from dual;
 select * from ehr_bak.sync_log order by create_time desc;
---1¡¢ÔÚjobÀïÃæÊ¹ÓÃº¯Êı´«µİÖ´ĞĞ¹ı³Ì²»ÄÜ´øÉÏ²ÎÊı£¬¼´Ê¹Íâ²ãÇ¶Ì×º¯ÊıÒ²Ã»ÓÃ
---2¡¢ÔÚjobÀïÃæÊ¹ÓÃº¯Êı´«µİÖ´ĞĞ¹ı³Ì²»ÄÜÓÃ±äÁ¿Æ´½ÓsqlÖ´ĞĞ£¬Ö»ÄÜÖ´ĞĞÖ±½ÓµÄsql
---½áÂÛ£ºjob²»ÄÜÊ¹ÓÃĞèÒª´«²ÎµÄº¯Êı!!!jobÖĞ²»ÄÜÊ¹ÓÃ±äÁ¿Æ´½ÓµÄsql!!!jobÖĞ²»ÄÜÇ¶Ì×º¯Êıµ÷ÓÃ!!!Ò²²»ÄÜÓÃdrop\createµÈÏÔÊ¾ddlÓï¾ä£¬¶øturncate\insert¿ÉÒÔ
+--1ã€åœ¨jobé‡Œé¢ä½¿ç”¨å‡½æ•°ä¼ é€’æ‰§è¡Œè¿‡ç¨‹ä¸èƒ½å¸¦ä¸Šå‚æ•°ï¼Œå³ä½¿å¤–å±‚åµŒå¥—å‡½æ•°ä¹Ÿæ²¡ç”¨
+--2ã€åœ¨jobé‡Œé¢ä½¿ç”¨å‡½æ•°ä¼ é€’æ‰§è¡Œè¿‡ç¨‹ä¸èƒ½ç”¨å˜é‡æ‹¼æ¥sqlæ‰§è¡Œï¼Œåªèƒ½æ‰§è¡Œç›´æ¥çš„sql
+--ç»“è®ºï¼šjobä¸èƒ½ä½¿ç”¨éœ€è¦ä¼ å‚çš„å‡½æ•°!!!jobä¸­ä¸èƒ½ä½¿ç”¨å˜é‡æ‹¼æ¥çš„sql!!!jobä¸­ä¸èƒ½åµŒå¥—å‡½æ•°è°ƒç”¨!!!ä¹Ÿä¸èƒ½ç”¨drop\createç­‰æ˜¾ç¤ºddlè¯­å¥ï¼Œè€Œturncate\insertå¯ä»¥
 
---ÒÆ³ıjob
+--ç§»é™¤job
 select dbms_job.remove(1020) from dual;
 
---²éÑ¯×Ö¶Î×¢ÊÍSQL
+--æŸ¥è¯¢å­—æ®µæ³¨é‡ŠSQL
 SELECT c.oid,col.table_schema, col.table_name, col.column_name, col.ordinal_position AS order, d.description
 FROM information_schema.columns col
 JOIN pg_class c ON c.relname = col.table_name
@@ -89,28 +89,28 @@ AND d.description is not null
 AND col.table_name in ('mv_org_info')
 ORDER BY col.table_name, col.ordinal_position;
 
---²éÑ¯±íÃû×¢ÊÍSQL ¸ù¾İÄ£Ê½¡¢±í²éÑ¯£¬r´ú±í±í£¬mv´ú±íÊÓÍ¼ (ÓÅ»¯ºóµÄ²éÑ¯Óï¾ä£¬ÄÜ±£Ö¤±íµÄ±ä¸üºó»¹ÄÜ²éÑ¯³ö½á¹û)
+--æŸ¥è¯¢è¡¨åæ³¨é‡ŠSQL æ ¹æ®æ¨¡å¼ã€è¡¨æŸ¥è¯¢ï¼Œrä»£è¡¨è¡¨ï¼Œmvä»£è¡¨è§†å›¾ (ä¼˜åŒ–åçš„æŸ¥è¯¢è¯­å¥ï¼Œèƒ½ä¿è¯è¡¨çš„å˜æ›´åè¿˜èƒ½æŸ¥è¯¢å‡ºç»“æœ)
 select relname as tablename,coalesce( cast(obj_description(relfilenode,'pg_class') as varchar),g.description) as comment
 from pg_class c join pg_namespace pn on c.relnamespace = pn.oid
 left join pg_catalog.pg_description g on c.oid = g.objoid and g.objsubid = 0
 where relkind in ('r','mv') and relname not like 'pg_%' and relname not like 'sql_%'
-and relchecks = '0' --¹ıÂËµô·Ö±í
-and pn.nspname in ('ehr_mid') --¹ıÂËschema
-and relname not in ('sync_log') --¹ıÂË²»ĞèÒªÏÔÊ¾µÄ±í
+and relchecks = '0' --è¿‡æ»¤æ‰åˆ†è¡¨
+and pn.nspname in ('ehr_mid') --è¿‡æ»¤schema
+and relname not in ('sync_log') --è¿‡æ»¤ä¸éœ€è¦æ˜¾ç¤ºçš„è¡¨
 order by relname;
---ÓÅ»¯Ç°µÄ×¢ÊÍ²éÑ¯Óï¾ä£¬Ê¹ÓÃÕâ¾ä»áÔÚ±í±ä¸üµÄÊ±ºò²é²»³ö²¿·Ö×¢ÊÍ
+--ä¼˜åŒ–å‰çš„æ³¨é‡ŠæŸ¥è¯¢è¯­å¥ï¼Œä½¿ç”¨è¿™å¥ä¼šåœ¨è¡¨å˜æ›´çš„æ—¶å€™æŸ¥ä¸å‡ºéƒ¨åˆ†æ³¨é‡Š
 /*select relname as tablename,cast(obj_description(relfilenode,'pg_class') as varchar) as comment
 from pg_class c join pg_namespace pn on c.relnamespace = pn.oid
 where relkind = 'r' and relname not like 'pg_%' and relname not like 'sql_%'
-and relchecks = '0' --¹ıÂËµô·Ö±í
-and pn.nspname in ('ehr_rpt') --¹ıÂËschema
-and relname not in ('sync_log') --¹ıÂË²»ĞèÒªÏÔÊ¾µÄ±í
+and relchecks = '0' --è¿‡æ»¤æ‰åˆ†è¡¨
+and pn.nspname in ('ehr_rpt') --è¿‡æ»¤schema
+and relname not in ('sync_log') --è¿‡æ»¤ä¸éœ€è¦æ˜¾ç¤ºçš„è¡¨
 order by relname;*/
 
---ÔÚ´æ´¢¹ı³Ì¡¢º¯ÊıÀïÃæ²»ÒËÊ¹ÓÃddlÓï¾ä£¬Èçdrop£¬»á°Ñ×¢ÊÍĞÅÏ¢Ò²É¾µô
---Ê¹ÓÃtruncateÇå¿ÕÊı¾İ±Èdelete¿ì£¬ÒòÎªtruncateÊÇddlÓï¾ä£¬ÔÚddlµÄ²ã¼¶È¥Çå¿ÕÊı¾İ£¬²¢±£ÁôddlµÄ½á¹¹£¬ËùÒÔ×¢ÊÍ»¹ÔÚ
+--åœ¨å­˜å‚¨è¿‡ç¨‹ã€å‡½æ•°é‡Œé¢ä¸å®œä½¿ç”¨ddlè¯­å¥ï¼Œå¦‚dropï¼Œä¼šæŠŠæ³¨é‡Šä¿¡æ¯ä¹Ÿåˆ æ‰
+--ä½¿ç”¨truncateæ¸…ç©ºæ•°æ®æ¯”deleteå¿«ï¼Œå› ä¸ºtruncateæ˜¯ddlè¯­å¥ï¼Œåœ¨ddlçš„å±‚çº§å»æ¸…ç©ºæ•°æ®ï¼Œå¹¶ä¿ç•™ddlçš„ç»“æ„ï¼Œæ‰€ä»¥æ³¨é‡Šè¿˜åœ¨
 
---Ê±ÇøÆ«ÒÆ
+--æ—¶åŒºåç§»
 select '2023-09-06 02:35:00.733852' at time zone '-8:00' from dual;
 
 select CURRENT_TIMESTAMP;
@@ -122,87 +122,87 @@ select * from pg_job where job_id in ('1030','1031');
 
 
 
---²éÑ¯¶ÔÏó±êÊ¶·ûoidÎª1259µÄ±íÊÇÄÄÒ»ÕÅ
+--æŸ¥è¯¢å¯¹è±¡æ ‡è¯†ç¬¦oidä¸º1259çš„è¡¨æ˜¯å“ªä¸€å¼ 
 select 1259::regclass;--pg_class
 
 
---postgresqlÊÇ»ùÓÚ²åÈëÊµÏÖµÄÊÂÎñ¶à°æ±¾¿ØÖÆ£¬ºÍoracle¡¢mysqlµÄ»Ø¹ö¶Î²»Í¬£¬²»»áÉ¾³ı¾ÉµÄÊÂÎñÊı¾İ£¬¿Õ¼äÒ²Ã»ÓĞÁ¢¼´ÊÍ·Å£¬¶øÊÇ½»¸øvaccum½ø³ÌÀàËÆÓÚjavaµÄÀ¬»ø»ØÊÕÈ¥»ØÊÕ
---ºÃ´¦
---1¡¢ÊÂÎñµÄ»Ø¹ö¿ÉÒÔÁ¢¼´Íê³É£¬ÎŞÂÛÊÂÎñ½øĞĞÁË¶àÉÙ²Ù×÷
---2¡¢Êı¾İ¿ÉÒÔ½øĞĞºÜ¶à¸üĞÂ£¬²»»á²úÉúORA-1555µÄ´íÎóÀ§ÈÅ
---ÁÓÊÆ
---1¡¢¾É°æ±¾Êı¾İĞèÒªÇåÀí
---2¡¢¾É°æ±¾µÄÊı¾İ»áµ¼ÖÂ²éÑ¯¸üÂıÒ»Ğ©
+--postgresqlæ˜¯åŸºäºæ’å…¥å®ç°çš„äº‹åŠ¡å¤šç‰ˆæœ¬æ§åˆ¶ï¼Œå’Œoracleã€mysqlçš„å›æ»šæ®µä¸åŒï¼Œä¸ä¼šåˆ é™¤æ—§çš„äº‹åŠ¡æ•°æ®ï¼Œç©ºé—´ä¹Ÿæ²¡æœ‰ç«‹å³é‡Šæ”¾ï¼Œè€Œæ˜¯äº¤ç»™vaccumè¿›ç¨‹ç±»ä¼¼äºjavaçš„åƒåœ¾å›æ”¶å»å›æ”¶
+--å¥½å¤„
+--1ã€äº‹åŠ¡çš„å›æ»šå¯ä»¥ç«‹å³å®Œæˆï¼Œæ— è®ºäº‹åŠ¡è¿›è¡Œäº†å¤šå°‘æ“ä½œ
+--2ã€æ•°æ®å¯ä»¥è¿›è¡Œå¾ˆå¤šæ›´æ–°ï¼Œä¸ä¼šäº§ç”ŸORA-1555çš„é”™è¯¯å›°æ‰°
+--åŠ£åŠ¿
+--1ã€æ—§ç‰ˆæœ¬æ•°æ®éœ€è¦æ¸…ç†
+--2ã€æ—§ç‰ˆæœ¬çš„æ•°æ®ä¼šå¯¼è‡´æŸ¥è¯¢æ›´æ…¢ä¸€äº›
 
 
 
---Êı¾İ¿âĞÔÄÜÊÓÍ¼ ¿ÉÒÔ²éÑ¯³öµ±Ç°ÕıÔÚÔËĞĞµÄSQL
+--æ•°æ®åº“æ€§èƒ½è§†å›¾ å¯ä»¥æŸ¥è¯¢å‡ºå½“å‰æ­£åœ¨è¿è¡Œçš„SQL
 select * from pg_stat_activity;
---ÓÃ»§±í
+--ç”¨æˆ·è¡¨
 select * from pg_stat_user_tables;
 select * from pg_stat_user_functions;
 
---ÏÂÃæµÄ¹æÔò¿ÉÒÔÖ¸µ¼Ë÷ÒıµÄ´´½¨
---1¡¢ÌØ±ğĞ¡µÄ±í¿ÉÒÔÃ»ÓĞË÷Òı£¬µ«³¬¹ı300ĞĞµÄ±í¾ÍÓ¦¸ÃÓĞË÷Òı
---2¡¢¾­³£ÓëÆäËû±í½øĞĞÁ¬½ÓµÄ±í£¬ÔÚÁ¬½ÓµÄ×Ö¶ÎÉÏÓ¦¸Ã½¨Á¢Ë÷Òı
---3¡¢¾­³£³öÏÖÔÚwhere×Ö¾äÖĞµÄ´ó±í×Ö¶ÎÓ¦¸Ã½¨Á¢Ë÷Òı
---4¡¢¾­³£³öÏÖÔÚorder by×Ó¾äÖĞµÄ×Ö¶Î£¬Ó¦¸Ã½¨Á¢Ë÷Òı
---5¡¢¾­³£³öÏÖÔÚgroup by×Ö¾äÖĞµÄ×Ö¶Î£¬Ó¦¸Ã½¨Á¢Ë÷Òı
---6¡¢ÁªºÏË÷ÒıÓ¦¾¡Á¿ÒªÇówhereÁªºÏ³öÏÖ£¬·ñÔò¾¡Á¿¿¼ÂÇµ¥×Ö¶ÎË÷Òı
---7¡¢Èç¹ûÒÑ¾­½¨Á¢ÁË£¨A¡¢B)µÄÁªºÏË÷Òı£¬Í¨³£¾Í²»ÒªÔÙ½¨AµÄµ¥×Ö¶ÎË÷ÒıÁË
+--ä¸‹é¢çš„è§„åˆ™å¯ä»¥æŒ‡å¯¼ç´¢å¼•çš„åˆ›å»º
+--1ã€ç‰¹åˆ«å°çš„è¡¨å¯ä»¥æ²¡æœ‰ç´¢å¼•ï¼Œä½†è¶…è¿‡300è¡Œçš„è¡¨å°±åº”è¯¥æœ‰ç´¢å¼•
+--2ã€ç»å¸¸ä¸å…¶ä»–è¡¨è¿›è¡Œè¿æ¥çš„è¡¨ï¼Œåœ¨è¿æ¥çš„å­—æ®µä¸Šåº”è¯¥å»ºç«‹ç´¢å¼•
+--3ã€ç»å¸¸å‡ºç°åœ¨whereå­—å¥ä¸­çš„å¤§è¡¨å­—æ®µåº”è¯¥å»ºç«‹ç´¢å¼•
+--4ã€ç»å¸¸å‡ºç°åœ¨order byå­å¥ä¸­çš„å­—æ®µï¼Œåº”è¯¥å»ºç«‹ç´¢å¼•
+--5ã€ç»å¸¸å‡ºç°åœ¨group byå­—å¥ä¸­çš„å­—æ®µï¼Œåº”è¯¥å»ºç«‹ç´¢å¼•
+--6ã€è”åˆç´¢å¼•åº”å°½é‡è¦æ±‚whereè”åˆå‡ºç°ï¼Œå¦åˆ™å°½é‡è€ƒè™‘å•å­—æ®µç´¢å¼•
+--7ã€å¦‚æœå·²ç»å»ºç«‹äº†ï¼ˆAã€B)çš„è”åˆç´¢å¼•ï¼Œé€šå¸¸å°±ä¸è¦å†å»ºAçš„å•å­—æ®µç´¢å¼•äº†
 
---SQLÓÅ»¯
---Í¨³£Ó¦¸Ã°²×°pg_stat_statementschaj ,¼ÇÂ¼ÁËËùÓĞSQLÓï¾äµÄÖ´ĞĞÍ³¼ÆĞÅÏ¢£¬°²×°´Ë²å¼şĞèÒªÖØÆôÒ»´ÎÊı¾İ¿â£¬×îºÃÔÚ½¨Êı¾İ¿âÖ®³õ¾Í°²×°
+--SQLä¼˜åŒ–
+--é€šå¸¸åº”è¯¥å®‰è£…pg_stat_statementschaj ,è®°å½•äº†æ‰€æœ‰SQLè¯­å¥çš„æ‰§è¡Œç»Ÿè®¡ä¿¡æ¯ï¼Œå®‰è£…æ­¤æ’ä»¶éœ€è¦é‡å¯ä¸€æ¬¡æ•°æ®åº“ï¼Œæœ€å¥½åœ¨å»ºæ•°æ®åº“ä¹‹åˆå°±å®‰è£…
 --select max_time,query from pg_stat_statements order by max_time desc limit 10;
---ÕÒ³öÖ´ĞĞÊ±¼ä×î³¤µÄ10ÌõSQLÓï¾ä
+--æ‰¾å‡ºæ‰§è¡Œæ—¶é—´æœ€é•¿çš„10æ¡SQLè¯­å¥
 --select max_time,query from pg_stat_statements order by max_time desc limit 10;
---ÕÒ³öÖ´ĞĞ´ÎÊı×îÆµ·±µÄ10ÌõSQLÓï¾ä
+--æ‰¾å‡ºæ‰§è¡Œæ¬¡æ•°æœ€é¢‘ç¹çš„10æ¡SQLè¯­å¥
 
 
---postgresqlµÄreutrning Óï·¨¿ÉÒÔ·µ»ØÈÎºÎÁĞ
+--postgresqlçš„reutrning è¯­æ³•å¯ä»¥è¿”å›ä»»ä½•åˆ—
 --create table test(id serial primary key, t text, tm timestamptz default now());
 --insert into test(t) values('1111') returning id, tm;
 
 
---on duplicate key update ´úÌæoracle mssyqlÖĞµÄ merge into Óï·¨ P440
+--on duplicate key update ä»£æ›¿oracle mssyqlä¸­çš„ merge into è¯­æ³• P440
 
---Êı¾İ³éÑù´ó±íÊı¾İ£¬³éÑù±ÈÀıÊÇ0.1%£¬Ğ§ÂÊ¸ß
+--æ•°æ®æŠ½æ ·å¤§è¡¨æ•°æ®ï¼ŒæŠ½æ ·æ¯”ä¾‹æ˜¯0.1%ï¼Œæ•ˆç‡é«˜
 select * from ehr_sync.bak_a001_history tablesample system(0.1);
---select * from test01 where id%1000 = 1 Ğ§ÂÊµÍ
+--select * from test01 where id%1000 = 1 æ•ˆç‡ä½
 
 
---Ö÷±¸¿â Ö÷´Ó¸´ÖÆ
---Èç¹ûÁ÷¸´ÖÆÊÇÍ¬²½µÄ
+--ä¸»å¤‡åº“ ä¸»ä»å¤åˆ¶
+--å¦‚æœæµå¤åˆ¶æ˜¯åŒæ­¥çš„
 select application_name,client_addr,state,sync_priority,sync_state from pg_stat_replication;
---Èç¹ûÁ÷¸´ÖÆÊÇÒì²½µÄ
+--å¦‚æœæµå¤åˆ¶æ˜¯å¼‚æ­¥çš„
 select pid,state,client_addr,sync_priority,sync_state from pg_stat_replication;
 
 select * from pg_stat_wal_receiver;
 
 
 -----------------------------------------------------------start
---ÓÃ»§¹ÜÀí
+--ç”¨æˆ·ç®¡ç†
 select current_database;
 select current_user;
 select current_schema;
 
---´´½¨ĞÂÓÃ»§(ĞÂÓÃ»§×Ô´øµÇÂ¼È¨ÏŞ£¬ĞÂ½ÇÉ«²»´øµÇÂ¼È¨ÏŞ£¬³ı´ËÖ®ÍâÃ»ÓĞÈÎºÎÇø±ğ)
+--åˆ›å»ºæ–°ç”¨æˆ·(æ–°ç”¨æˆ·è‡ªå¸¦ç™»å½•æƒé™ï¼Œæ–°è§’è‰²ä¸å¸¦ç™»å½•æƒé™ï¼Œé™¤æ­¤ä¹‹å¤–æ²¡æœ‰ä»»ä½•åŒºåˆ«)
 create user dev with password 'ehr_pg#dev122';
 create role dev_role with password 'ehr_pg#dev122';
 
 
 
---È¨ÏŞ¹ÜÀí
---ÎªÒÑ´´½¨ÓÃ»§ÊÚÓèdatabase²Ù×÷È¨ÏŞ grantÊÇ¸³Óè revokeÊÇÊÕ»Ø
+--æƒé™ç®¡ç†
+--ä¸ºå·²åˆ›å»ºç”¨æˆ·æˆäºˆdatabaseæ“ä½œæƒé™ grantæ˜¯èµ‹äºˆ revokeæ˜¯æ”¶å›
 --grant {{create|connect|temporary|temp}|all[ privileges]} on database hrdb to dev|public [with grant option];
 grant all privileges on database hrdb to dev;
 revoke all privileges on database hrdb from dev_bi2;
---ÎªÒÑ´´½¨ÓÃ»§ÊÚÓèschema²Ù×÷È¨ÏŞ
+--ä¸ºå·²åˆ›å»ºç”¨æˆ·æˆäºˆschemaæ“ä½œæƒé™
 --grant all privileges on schema ehr_rpt to dev;
 grant select on all tables in schema ehr_rpt to dev;
 grant select on all tables in schema ehr_mid to dev;
 grant create on schema ehr_mid to dev;
---ÎªÒÑ´´½¨ÓÃ»§ÊÚÓèhrdbµÄÁ¬½ÓÈ¨ÏŞ
+--ä¸ºå·²åˆ›å»ºç”¨æˆ·æˆäºˆhrdbçš„è¿æ¥æƒé™
 grant connect on database hrdb to dev;
 
 create user dev_ehr with password 'ehr_pg#dev122';
@@ -236,7 +236,7 @@ grant delete on all tables in schema ehr_mid to dev_ehr;
 grant delete on all tables in schema ehr_sync to dev_ehr;
 grant delete on all tables in schema ehr_bak to dev_ehr;
 
---ÈËÁ¦Êı¾İÖĞĞÄ¿ª·¢ dev_ehr ehr_pg#dev122
+--äººåŠ›æ•°æ®ä¸­å¿ƒå¼€å‘ dev_ehr ehr_pg#dev122
 create user dev_bi with password 'dev_bi#ehr122';
 grant select,update on all tables in schema ehr_bi to dev_ehr;
 grant select,update on all tables in schema ehr_mid to dev_ehr;
@@ -249,11 +249,11 @@ ALTER ROLE dev_ehr WITH NOSUPERUSER NOCREATEDB;
 
 grant select on all tables in schema ehr_bi to dev_ehr;
 grant select on all tables in schema ehr_mid to dev_ehr;
---ÎªÒÑ´´½¨ÓÃ»§ÊÚÓèhrdbµÄÁ¬½ÓÈ¨ÏŞ
+--ä¸ºå·²åˆ›å»ºç”¨æˆ·æˆäºˆhrdbçš„è¿æ¥æƒé™
 grant connect on database hrdb to dev_ehr;
 alter database hrdb owner to grantor;
 
---É¾³ıÒ»¸öÓÃ»§
+--åˆ é™¤ä¸€ä¸ªç”¨æˆ·
 drop user dev_ehr;
 select relname,relacl from pg_class where relname = 'rpt_c0011';
 select nspname,nspacl from pg_namespace where nspname = 'ehr_bak';
@@ -268,12 +268,12 @@ revoke select on pg_catalog.pg_database from dev_ehr;
 reassign owned by dev_ehr to hr_test;
 revoke all on schema ehr_bak from dev_ehr;
 
---Êµ¼Ê²»ÉúĞ§ Êµ¼Ê¸³È¨ ÒªÃ´ÓÃÕâ¸ö
+--å®é™…ä¸ç”Ÿæ•ˆ å®é™…èµ‹æƒ è¦ä¹ˆç”¨è¿™ä¸ª
 grant select,update on all tables in schema ehr_bi to dev_bi;
 grant select,update on all tables in schema ehr_mid to dev_bi;
 grant select,update on all tables in schema ehr_sync to dev_bi;
 
---Êµ¼ÊÄÜÉúĞ§ Êµ¼Ê¸³È¨ ÒªÃ´ÓÃÕâ¸ö
+--å®é™…èƒ½ç”Ÿæ•ˆ å®é™…èµ‹æƒ è¦ä¹ˆç”¨è¿™ä¸ª
 grant all on schema ehr_bi to dev_bi;
 grant all on schema ehr_mid to dev_bi;
 grant all on schema ehr_sync to dev_bi;
@@ -286,53 +286,53 @@ grant all on schema ehr_mid to hr;
 grant all on schema ehr_sync to hr;
 grant all on schema ehr_bak to hr;
 
------------- È¨ÏŞ¸³Óè¡¢»ØÊÕÊµÀı ------------start
+------------ æƒé™èµ‹äºˆã€å›æ”¶å®ä¾‹ ------------start
 SELECT grantee, table_schema, table_name, string_agg(privilege_type, ', ') as privilege_type
 FROM information_schema.role_table_grants
 WHERE grantee = 'dev_bi' and privilege_type like '%SELECT%'
 group by grantee, table_schema, table_name;
 
---ÊÕ»ØupdateÈ¨ÏŞ
+--æ”¶å›updateæƒé™
 revoke update on table ehr_mid.mv_cq_rate_tj_month_group_by_jt from dev_bi;
 
---ÊÕ»ØselectÈ¨ÏŞ
+--æ”¶å›selectæƒé™
 revoke select on ehr_bi.bi_xc_0014 from dev_bi;
 
---¸³ÓèÈ¨ÏŞ
+--èµ‹äºˆæƒé™
 grant select on ehr_bi.bi_xc_0023 to dev_bi;
 grant select,update on ehr_bi.bi_xc_0006 to dev_bi;
 revoke select on ehr_bi.bi_xc_0006 from dev_bi;
 
---ÅúÁ¿»ØÊÕÈ¨ÏŞ£¬ÓÒÏÂ½ÇÑ¡ÔñCSV£¬¸´ÖÆğ¤Ìù¿ÉÒÔÄÃ³öÀ´½Å±¾
+--æ‰¹é‡å›æ”¶æƒé™ï¼Œå³ä¸‹è§’é€‰æ‹©CSVï¼Œå¤åˆ¶é»è´´å¯ä»¥æ‹¿å‡ºæ¥è„šæœ¬
 SELECT 'revoke update on table ' || table_schema || '.' || table_name || ' from dev_bi;'
 FROM information_schema.role_table_grants
 WHERE grantee = 'dev_bi' and privilege_type like '%UPDATE%'
 group by grantee, table_schema, table_name;
 
---Èç¹ûÌáÊ¾Ã»ÓĞschemaÈ¨ÏŞ£¬ĞèÒªµ¥¶À¸³ÓèÊ¹ÓÃÈ¨ÏŞ
+--å¦‚æœæç¤ºæ²¡æœ‰schemaæƒé™ï¼Œéœ€è¦å•ç‹¬èµ‹äºˆä½¿ç”¨æƒé™
 grant usage on schema ehr_sync to dev_bi;
------------- È¨ÏŞ¸³Óè¡¢»ØÊÕÊµÀı ------------end
+------------ æƒé™èµ‹äºˆã€å›æ”¶å®ä¾‹ ------------end
 
 
---ÄÜ²Ù×÷ehr_sync¡¢ehr_mid¡¢ehr_bi¡¢ehr_bakËÄ¸öschema
+--èƒ½æ“ä½œehr_syncã€ehr_midã€ehr_biã€ehr_bakå››ä¸ªschema
 --jdbc:postgresql://10.17.6.122/hrdb
---ÕËºÅ£ºdev_bi
---ÃÜÂë£ºdev_bi#ehr122
+--è´¦å·ï¼šdev_bi
+--å¯†ç ï¼šdev_bi#ehr122
 
---Èç¹ûÏÔÊ¾ÕË»§±»Ëø¶¨£¬ÔòĞèÒª½âËø
+--å¦‚æœæ˜¾ç¤ºè´¦æˆ·è¢«é”å®šï¼Œåˆ™éœ€è¦è§£é”
 --alter user dev_bi account unlock;
 -----------------------------------------------------------end
 
 
 ---------------------start------------------------
---ÈËÁ¦Êı¾İÖĞĞÄ¿ª·¢ dev_ehr ehr_pg#dev122
+--äººåŠ›æ•°æ®ä¸­å¿ƒå¼€å‘ dev_ehr ehr_pg#dev122
 create user dev_bi with password 'dev_bi#ehr122';
---ÄÜ²Ù×÷ehr_sync¡¢ehr_mid¡¢ehr_bi¡¢ehr_bakËÄ¸öschema
+--èƒ½æ“ä½œehr_syncã€ehr_midã€ehr_biã€ehr_bakå››ä¸ªschema
 --jdbc:postgresql://10.17.6.122/hrdb
---ÕËºÅ£ºdev_bi
---ÃÜÂë£ºdev_bi#ehr122
+--è´¦å·ï¼šdev_bi
+--å¯†ç ï¼šdev_bi#ehr122
 
---°´±íÊÚÈ¨¸øÖ¸¶¨ÓÃ»§£¬Èçdev_bi
+--æŒ‰è¡¨æˆæƒç»™æŒ‡å®šç”¨æˆ·ï¼Œå¦‚dev_bi
 grant select on ehr_bi.bi_h0001 to dev_bi;
 grant select on ehr_bi.bi_xc_0002 to dev_bi;
 grant select on ehr_bi.bi_xc_0003 to dev_bi;
@@ -358,10 +358,10 @@ grant select on ehr_rpt.rpt_emp_per_count_tj_rate to dev_bi;
 grant select on ehr_mid.kb_work_area_info to dev_bi;
 grant select on ehr_rpt.rpt_emp_per_count_tj_trend to dev_bi;
 grant select,insert on ehr_bi.bi_yy_0008 to dev_bi;
---»ØÊÕÖ¸¶¨±íµÄËùÓĞÈ¨ÏŞ
+--å›æ”¶æŒ‡å®šè¡¨çš„æ‰€æœ‰æƒé™
 revoke all privileges on ehr_bi.bi_yy_0001 from dev_bi;
 
---ÎªÒÑ´´½¨ÓÃ»§ÊÚÓèhrdbµÄÁ¬½ÓÈ¨ÏŞ
+--ä¸ºå·²åˆ›å»ºç”¨æˆ·æˆäºˆhrdbçš„è¿æ¥æƒé™
 grant connect on database hrdb to dev_bi;
 alter database hrdb owner to grantor;
 ---------------------end---------------------------
@@ -378,24 +378,24 @@ SELECT * FROM pg_extension WHERE extname = 'dblink';
 
 SELECT version();
 set search_path = hr;
-SELECT dblink_get_connections();--postgresqlÊı¾İ¿â²ÅÓĞ
+SELECT dblink_get_connections();--postgresqlæ•°æ®åº“æ‰æœ‰
 
---´´½¨À©Õ¹
+--åˆ›å»ºæ‰©å±•
 CREATE EXTENSION dblink;
---ÏÈÖ´ĞĞdblink_connect±£³ÖÁ¬½Ó
+--å…ˆæ‰§è¡Œdblink_connectä¿æŒè¿æ¥
 SELECT dblink_connect('mycoon','hostaddr=172.16.103.92 port=6036 dbname=vastbase user=lst password=Bigdata@123');
---Ö´ĞĞBEGINÃüÁî
+--æ‰§è¡ŒBEGINå‘½ä»¤
 SELECT dblink_exec('mycoon', 'BEGIN');
---Ö´ĞĞÊı¾İ²Ù×÷
+--æ‰§è¡Œæ•°æ®æ“ä½œ
 SELECT dblink_exec('mycoon', 'create table people(id int,info varchar(10))');
 SELECT dblink_exec('mycoon', 'insert into people values(1,''foo'')');
 SELECT dblink_exec('mycoon', 'insert into people values(2,''foo'')');
 SELECT dblink_exec('mycoon', 'update people set info=''bar'' where id=1');
---Ö´ĞĞÊÂÎñÌá½»
+--æ‰§è¡Œäº‹åŠ¡æäº¤
 SELECT dblink_exec('mycoon', 'COMMIT');
---Ö´ĞĞ²éÑ¯
+--æ‰§è¡ŒæŸ¥è¯¢
 SELECT * FROM dblink('mycoon','SELECT * FROM people') as testTable (id int,info varchar(10));
---½â³ıÁ¬½Ó
+--è§£é™¤è¿æ¥
 SELECT dblink_disconnect('mycoon');
 
 set search_path = hr;
@@ -407,7 +407,7 @@ jarfile  '/home/vastbase2/ojdbc7.jar'
 
 
 -----------------------------------------------------------
---ÎªÒÑ´´½¨ÓÃ»§ÊÚÓèschema²Ù×÷È¨ÏŞ
+--ä¸ºå·²åˆ›å»ºç”¨æˆ·æˆäºˆschemaæ“ä½œæƒé™
 --grant all privileges on schema ehr_rpt to dev;
 grant select on all tables in schema ehr_rpt to hr;
 grant select on all tables in schema ehr_mid to hr;
@@ -416,10 +416,10 @@ grant select on all tables in schema ehr_sync to hr;
 
 
 -----------------------------------------------------------
---id×ÔÔöĞòÁĞÏà¹Ø²Ù×÷
+--idè‡ªå¢åºåˆ—ç›¸å…³æ“ä½œ
 select * from ehr_rpt.rpt_role_user order by id desc;
 delete from ehr_rpt.rpt_role_user where id = 54;
-INSERT INTO ehr_rpt.rpt_role_user (emp_no, emp_name, role_id, role_name, pms_level, fr_role_name, create_time, last_update_time, pms_flag, last_operator) VALUES ('551023', 'Áõµ¤', 'FD5F84B9387902B6E0535B14090A0A6E', '(ĞÂ)ÊÂÒµ²¿ÈËÊÂ¾­Àí:Ò»Àà(²Ëµ¥)', 'ÊÂÒµ²¿', 'ÊÂÒµ²¿ÈËÊÂ¾­Àí', '2023-10-18 15:40:01', '2023-10-18 15:40:01', 'eHR', 'admin');
+INSERT INTO ehr_rpt.rpt_role_user (emp_no, emp_name, role_id, role_name, pms_level, fr_role_name, create_time, last_update_time, pms_flag, last_operator) VALUES ('551023', 'åˆ˜ä¸¹', 'FD5F84B9387902B6E0535B14090A0A6E', '(æ–°)äº‹ä¸šéƒ¨äººäº‹ç»ç†:ä¸€ç±»(èœå•)', 'äº‹ä¸šéƒ¨', 'äº‹ä¸šéƒ¨äººäº‹ç»ç†', '2023-10-18 15:40:01', '2023-10-18 15:40:01', 'eHR', 'admin');
 alter table ehr_rpt.rpt_role_user add column id integer;
 alter table ehr_rpt.rpt_role_user add CONSTRAINT role_user_id primary key (id);
 create sequence role_user_id_seq start 54;
@@ -429,7 +429,7 @@ alter table ehr_rpt.rpt_role_user alter column id set default nextval('role_user
 
 
 
---uuidÖ§³Ö ºÍ¼æÈİĞÔ------------------------------------------
+--uuidæ”¯æŒ å’Œå…¼å®¹æ€§------------------------------------------
 select sys_guid();
 select sys_guid() from dual;
 select uuid() from dual;
@@ -439,49 +439,49 @@ select * from pg_job_proc where job_id = '1059';
 select * from pg_job where job_id = '1059';
 select dbms_job.remove(1059) from dual;
 
---ÖÕÖ¹pidÈÎÎñ
+--ç»ˆæ­¢pidä»»åŠ¡
 SELECT pg_cancel_backend(47734391117568)
 FROM pg_stat_activity
 WHERE state = 'active';
 
 
 
----Ë÷ÒıÖØ½¨---
+---ç´¢å¼•é‡å»º---
 alter index idx_row rebuild concurrently;
 reindex index concurrently idx_row;
 
 select * from pg_job_proc where what like '%%';
 
---»ØÊÕ´æ´¢¿Õ¼ä
+--å›æ”¶å­˜å‚¨ç©ºé—´
 --https://docs.vastdata.com.cn/zh/docs/VastbaseG100Ver2.2.10/doc/%E5%BC%80%E5%8F%91%E8%80%85%E6%8C%87%E5%8D%97/VACUUM.html
 VACUUM;
---µÚÒ»´ÎÖ´ĞĞÊ±¼ä 1h23m160ms
+--ç¬¬ä¸€æ¬¡æ‰§è¡Œæ—¶é—´ 1h23m160ms
 
 
 
--- Íâ½Ó¿âÅäÖÃ Ïà¹ØÅÅ²ésql
+-- å¤–æ¥åº“é…ç½® ç›¸å…³æ’æŸ¥sql
 -- SHOW VARIABLES LIKE 'character%';
 -- show engines;
 -- SHOW VARIABLES LIKE 'collation_%';
--- 28:°Ñcollation_databaseÉèÖÃÎªutf8_general_ci¼´¿É(Ä¬ÈÏµÄ)
--- 29:°Ñcollation_databaseÉèÖÃÎªutf8_bin¼´¿É
+-- 28:æŠŠcollation_databaseè®¾ç½®ä¸ºutf8_general_ciå³å¯(é»˜è®¤çš„)
+-- 29:æŠŠcollation_databaseè®¾ç½®ä¸ºutf8_binå³å¯
 -- INSERT INTO MY_TABLE(Variable_name, Value) VALUES ('collation_connection', 'utf8mb4_general_ci');
 -- INSERT INTO MY_TABLE(Variable_name, Value) VALUES ('collation_database', 'utf8_bin');
 -- INSERT INTO MY_TABLE(Variable_name, Value) VALUES ('collation_server', 'utf8_general_ci');
--- µ±³öÏÖ´óĞ¡Ğ´Êı¾İµÄÊ±ºò£¬ĞèÒªÌØÊâÅäÖÃÅÅĞò¹æÔò£¬ÓÒ»÷Õû¸öfrdb29¿â£¬ÉèÖÃÎª£ºutf8_bin
--- ÒòÎª28Ã»ÓĞ³öÏÖÕâÖÖÌØÊâÊı¾İ£¬ËùÒÔutf8_general_ci¿ÉÒÔ³É¹¦
--- mysql rds Õâ±ß£¬¿ÉÒÔ´ÓÊı¾İ¿âÈí¼ş²ãÃæ¡¢Êı¾İ¿â²ãÃæ¡¢±í²ãÃæ·Ö±ğÈ¥ÉèÖÃ±àÂëºÍÅÅĞò¹æÔò
+-- å½“å‡ºç°å¤§å°å†™æ•°æ®çš„æ—¶å€™ï¼Œéœ€è¦ç‰¹æ®Šé…ç½®æ’åºè§„åˆ™ï¼Œå³å‡»æ•´ä¸ªfrdb29åº“ï¼Œè®¾ç½®ä¸ºï¼šutf8_bin
+-- å› ä¸º28æ²¡æœ‰å‡ºç°è¿™ç§ç‰¹æ®Šæ•°æ®ï¼Œæ‰€ä»¥utf8_general_ciå¯ä»¥æˆåŠŸ
+-- mysql rds è¿™è¾¹ï¼Œå¯ä»¥ä»æ•°æ®åº“è½¯ä»¶å±‚é¢ã€æ•°æ®åº“å±‚é¢ã€è¡¨å±‚é¢åˆ†åˆ«å»è®¾ç½®ç¼–ç å’Œæ’åºè§„åˆ™
 
 
 select version();
 
 
---hrÓÃ»§ÓĞÈ¨ÏŞÊ¹ÓÃÒÔÏÂsql£¬²éÑ¯Ö¸¶¨ÓÃ»§dev_biÓĞÄÄĞ©±íÈ¨ÏŞ
+--hrç”¨æˆ·æœ‰æƒé™ä½¿ç”¨ä»¥ä¸‹sqlï¼ŒæŸ¥è¯¢æŒ‡å®šç”¨æˆ·dev_biæœ‰å“ªäº›è¡¨æƒé™
 SELECT grantee,table_schema,table_name,string_agg( privilege_type,', ' ) as privilege_type FROM information_schema.role_table_grants WHERE grantee='dev_bi' group by grantee,table_schema,table_name;
 
 
---¼ì²éÊı¾İ¿â¼æÈİÄ£Ê½
+--æ£€æŸ¥æ•°æ®åº“å…¼å®¹æ¨¡å¼
 select datname,datcompatibility from pg_database;
---PG ÊÇpostgresql
---B ÊÇmysql
---A ÊÇoracle
+--PG æ˜¯postgresql
+--B æ˜¯mysql
+--A æ˜¯oracle

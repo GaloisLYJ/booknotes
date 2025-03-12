@@ -8,7 +8,7 @@ ORDER BY
     pg_total_relation_size(relid) DESC;
 
 
---sql性能调优，代入sql_id，sql command执行，解释器将会给出执行建议
+--oracle sql性能调优，代入sql_id，sql command执行，解释器将会给出执行建议
 variable stmt_task VARCHAR2(64)
 EXEC :stmt_task := DBMS_SQLTUNE.CREATE_TUNING_TASK(sql_id=>'75uw81x30k2d6',time_limit=>7200);
 exec dbms_sqltune.execute_tuning_task(task_name =>:stmt_task);
