@@ -72,6 +72,40 @@ order siblings by B001715;
 101,比亚迪,-1,999999,3,/信息中心/公司级职能单位/比亚迪
 */
 
+-- rownum = 1的效果理解
+select ID,--记录ID
+       B001005,--父级ID
+       B001002,--简称
+       B001715,--排序码
+       level,--所属层级
+       sys_connect_by_path(B001005,'/') as path --完整路径
+from B001
+start with B001010 = '10019951' -- 层级查询的根节点为信息中心，起始条件
+connect by NOCYCLE id = prior B001002 -- prior先前的，先前的父作为子节点，即上探，简记：prior所在的字段就是方向，当存在A——B——A循环的时候，需要加上NOCYCLE
+order siblings by B001715;
+/*
+8C79847D6FA724EFE053C906090ACCDD,信息中心,8C79847D72FD24EFE053C906090ACCDD,999999,1,/信息中心
+8C79847D72FD24EFE053C906090ACCDD,公司级职能单位,101,001008,2,/信息中心/公司级职能单位
+101,比亚迪,-1,999999,3,/信息中心/公司级职能单位/比亚迪
+*/
+select ID,--记录ID
+       B001005,--父级ID
+       B001002,--简称
+       B001715,--排序码
+       level,--所属层级
+       sys_connect_by_path(B001005,'/') as path --完整路径
+from B001
+where rownum = 1
+start with B001010 = '10019951' -- 层级查询的根节点为信息中心，起始条件
+connect by NOCYCLE id = prior B001002 -- prior先前的，先前的父作为子节点，即上探，简记：prior所在的字段就是方向，当存在A——B——A循环的时候，需要加上NOCYCLE
+order siblings by B001715;
+/*
+8C79847D6FA724EFE053C906090ACCDD,信息中心,8C79847D72FD24EFE053C906090ACCDD,999999,1,/信息中心
+*/
+-- 所以其实默认是会把每个层级查到的记录都显示出来
+
+
+
 
 
 
@@ -160,4 +194,76 @@ B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) A1_B001005
 ,(SELECT B001255 FROM B001 B WHERE B.B001050 = '0895400308' AND ROWNUM =1 START WITH
 B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) A1_B001255
  FROM B001 A LEFT JOIN INTERFACE_COSTCENTER T1 ON A.B001205 = T1.COSTCENTERID;
+/*
+解读：
+    START WITH B.ID = A.ID  每条记录都去查询
+    CONNECT BY PRIOR B.B001002 = B.ID   查询方向是prior 父，即子——>父方向
+    WHERE B.B001050 = '0895438055' 为终止条件，当层级为需要的层级的时候终止
+    AND ROWNUM =1 是为了防止单个机构有多个父节点的错误数据情况，防呆取一个
+*/
 
+
+SELECT
+(SELECT B001005 FROM B001 B WHERE B.ID = '101' and ROWNUM =1 START WITH
+B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) B001005_1
+,(SELECT level FROM B001 B WHERE B.ID = '101' and ROWNUM =1 START WITH
+B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) olevel_1
+,(SELECT sys_connect_by_path(B001005,'/') as path FROM B001 B WHERE B.ID = '101' and ROWNUM =1 START WITH
+B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) path_1
+
+,(SELECT B001005 FROM B001 B WHERE ROWNUM =1 START WITH
+B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) B001005_2
+,(SELECT level FROM B001 B WHERE ROWNUM =1 START WITH
+B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) olevel_2
+,(SELECT sys_connect_by_path(B001005,'/') as path FROM B001 B WHERE ROWNUM =1 START WITH
+B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) path_2
+
+,(SELECT B001005 FROM B001 B WHERE B.B001050 = '089520' AND ROWNUM =1 START WITH
+B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) B001005_need
+,(SELECT level FROM B001 B WHERE B.B001050 = '089520' AND ROWNUM =1 START WITH
+B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) olevel_need
+,(SELECT sys_connect_by_path(B001005,'/') as path FROM B001 B WHERE B.B001050 = '089520' AND ROWNUM =1 START WITH
+B.ID = A.ID CONNECT BY PRIOR B.B001002 = B.ID ) path_need
+
+ FROM B001 A LEFT JOIN INTERFACE_COSTCENTER T1 ON A.B001205 = T1.COSTCENTERID;
+/*
+比亚迪,5,/项目部/研究所/第三事业部/电子事业群/比亚迪
+比亚迪,6,/项目一科/项目部/研究所/第三事业部/电子事业群/比亚迪
+比亚迪,6,/项目二科/项目部/研究所/第三事业部/电子事业群/比亚迪
+比亚迪,6,/项目工程科/项目部/研究所/第三事业部/电子事业群/比亚迪
+
+项目部,1,/项目部
+项目一科,1,/项目一科
+项目二科,1,/项目二科
+项目工程科,1,/项目工程科
+
+电子事业群,4,/项目部/研究所/第三事业部/电子事业群
+电子事业群,5,/项目一科/项目部/研究所/第三事业部/电子事业群
+电子事业群,5,/项目二科/项目部/研究所/第三事业部/电子事业群
+电子事业群,5,/项目工程科/项目部/研究所/第三事业部/电子事业群
+
+解读：不指定终止条件 WHERE B.ID = '101'，B.B001050 = '089520' 的时候，层级查询不会递归，只执行一次即本身层级
+*/
+
+
+
+-- 符合常规思维的根节点，符合常规思维的遍历方向
+select ID,--记录ID
+       B001005,--父级ID
+       B001002,--简称
+       B001715,--排序码
+       level,--所属层级
+       sys_connect_by_path(B001005,'/') as path --完整路径
+from B001
+start with ID = '101'
+connect by NOCYCLE prior id = B001002
+order siblings by B001715;
+/*
+101,比亚迪,-1,999999,1,/比亚迪
+8C79847D72FE24EFE053C906090ACCDD,公司级研发单位,101,001001,2,/比亚迪/公司级研发单位
+8C79847D715C24EFE053C906090ACCDD,电子研究院,8C79847D72FE24EFE053C906090ACCDD,001001001,3,/比亚迪/公司级研发单位/电子研究院
+8C79847D716024EFE053C906090ACCDD,财务科,8C79847D715C24EFE053C906090ACCDD,001001001001,4,/比亚迪/公司级研发单位/电子研究院/财务科
+8C79847D71A124EFE053C906090ACCDD,院长办公室,8C79847D715C24EFE053C906090ACCDD,001001001002,4,/比亚迪/公司级研发单位/电子研究院/院长办公室
+8C79847D71A324EFE053C906090ACCDD,行政管理科,8C79847D71A124EFE053C906090ACCDD,001001001002001,5,/比亚迪/公司级研发单位/电子研究院/院长办公室/行政管理科
+8C79847D71A224EFE053C906090ACCDD,综合科,8C79847D71A124EFE053C906090ACCDD,001001001002002,5,/比亚迪/公司级研发单位/电子研究院/院长办公室/综合科
+*/
