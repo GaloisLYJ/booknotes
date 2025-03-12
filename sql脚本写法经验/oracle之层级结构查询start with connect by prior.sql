@@ -23,6 +23,7 @@ SELECT MIX_ORGID, ORGCODE, ORGNAME, ORGSHORTNAME, MIX_ORG_TREEID, COSTCENTERID, 
 SELECT 
     column1, column2, ...,
     LEVEL, -- 层级深度（根为1，子节点递增）
+    CONNECT_BY_ISLEAF as is_leaf, -- 是否为叶子节点（1 是，0 否）
     SYS_CONNECT_BY_PATH(column, '/') AS path -- 从根到当前节点的路径
 FROM 
     table_name
