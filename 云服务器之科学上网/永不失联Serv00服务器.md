@@ -60,6 +60,22 @@
 
    这台当前用来搭建webssh，详见《Serv00+Sing-box(综合脚本)》。
 
+   20250418用
+
+   ```
+   bash <(curl -Ls https://raw.githubusercontent.com/eooce/sing-box/test/sb_00.sh)
+   ```
+
+   用于搭建临时外网入口，购买机场订阅。
+
+   之后用
+
+   ```
+   bash <(curl -Ls https://raw.githubusercontent.com/GaloisLYJ/serv00-play/refs/heads/main/start.sh)
+   ```
+
+   初始化serv00服务器避免被封
+
  - galoisliuyujian@outlook.com
 
    lyj3354130
@@ -74,6 +90,8 @@
    
    这台当前用来搭建X-ui备用节点，详见《Serv00+X-ui+(vmess)》
    
+   20250418已被封
+   
 - walldocker0001@outlook.com
 
   thepassword0001
@@ -87,6 +105,8 @@
   ```
   
   这台当前用来搭建稳定hy2节点，工作win用v2rayN开路由全局可破deepseek，开热点+tun可破github
+  
+  20250418已被封
   
 - yujian_galois@foxmail.com QQ邮箱
 
