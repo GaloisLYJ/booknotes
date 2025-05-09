@@ -23,6 +23,10 @@
 
   ```bash
   yum -y install wget
+  centos
+  
+  sudo apt install wget
+  ubuntu
   ```
 
 - 一键脚本
@@ -37,6 +41,8 @@
 
     ```bash
     wget -N --no-check-certificate https://raw.githubusercontent.com/GaloisLYJ/doubi/refs/heads/master/ssr.sh && chmod +x ssr.sh && bash ssr.sh
+    
+    会有下载网络问题
     ```
 
 - 脚本执行过程配置实例
